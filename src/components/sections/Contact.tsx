@@ -38,7 +38,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section-pad relative overflow-hidden bg-arena-panel">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="glow-blob right-[-10%] top-[-10%] h-[400px] w-[400px] bg-arena-orange/12" />
+      <div className="glow-blob right-[-10%] top-[-10%] h-[400px] w-[400px] bg-arena-green/12" />
       <div className="container-x relative">
         <div className="mb-12 text-center">
           <motion.span
@@ -57,7 +57,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
           >
-            Come <span className="text-gradient-orange">Play</span>
+            Come <span className="text-gradient-green">Play</span>
           </motion.h2>
         </div>
 
@@ -71,9 +71,9 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: 0.08 * i, ease: "easeOut" as const }}
-                className="flex flex-col rounded-2xl border border-white/10 bg-arena-card p-6 transition-colors duration-300 hover:border-arena-orange/40"
+                className="flex flex-col rounded-2xl border border-white/10 bg-arena-card p-6 transition-colors duration-300 hover:border-arena-green/40"
               >
-                <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-arena-orange/20 to-arena-amber/10 text-arena-orange">
+                <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-arena-green/20 to-arena-mint/10 text-arena-green">
                   <c.icon className="h-5 w-5" />
                 </span>
                 <h3 className="font-display text-2xl uppercase tracking-wide text-white">{c.title}</h3>
@@ -87,7 +87,7 @@ export default function Contact() {
                     href={c.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-auto pt-4 text-xs font-bold uppercase tracking-wider text-arena-orange hover:underline"
+                    className="mt-auto pt-4 text-xs font-bold uppercase tracking-wider text-arena-green hover:underline"
                   >
                     {c.cta} →
                   </a>
@@ -100,7 +100,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: 0.4 }}
-              className="flex items-center justify-center gap-4 rounded-2xl border border-arena-orange/30 bg-gradient-to-r from-arena-orange/15 to-arena-amber/10 p-6 sm:col-span-2"
+              className="flex items-center justify-center gap-4 rounded-2xl border border-arena-green/30 bg-gradient-to-r from-arena-green/15 to-arena-mint/10 p-6 sm:col-span-2"
             >
               <a
                 href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hi KAKX Arena! I have a question.")}`}
@@ -141,7 +141,7 @@ export default function Contact() {
               href={siteConfig.mapsLink}
               target="_blank"
               rel="noreferrer"
-              className="absolute bottom-4 left-4 rounded-full bg-black/80 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition-colors hover:text-arena-orange"
+              className="absolute bottom-4 left-4 rounded-full bg-black/80 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition-colors hover:text-arena-green"
             >
               📍 Open in Google Maps
             </a>

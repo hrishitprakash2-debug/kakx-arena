@@ -15,8 +15,8 @@ export default function Academy() {
   return (
     <section id="academy" className="relative overflow-hidden bg-arena-panel">
       <div className="absolute inset-0 bg-grid opacity-40" />
-      <div className="glow-blob left-[-12%] top-[-20%] h-[460px] w-[460px] bg-arena-gold/15" />
-      <div className="glow-blob bottom-[-25%] right-[-10%] h-[380px] w-[380px] bg-arena-orange/10" />
+      <div className="glow-blob left-[-12%] top-[-20%] h-[460px] w-[460px] bg-arena-lime/15" />
+      <div className="glow-blob bottom-[-25%] right-[-10%] h-[380px] w-[380px] bg-arena-green/10" />
 
       <div className="container-x relative grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:gap-16">
         {/* image side */}
@@ -27,8 +27,8 @@ export default function Academy() {
           transition={{ duration: 0.8, ease: "easeOut" as const }}
           className="relative order-2 lg:order-1"
         >
-          <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-arena-gold/20 to-transparent blur-2xl" />
-          <div className="relative overflow-hidden rounded-2xl border border-arena-gold/25">
+          <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-arena-lime/20 to-transparent blur-2xl" />
+          <div className="relative overflow-hidden rounded-2xl border border-arena-lime/25">
             <Image
               src="/images/g3.jpg"
               alt="KAKX Cricket Academy training"
@@ -39,10 +39,10 @@ export default function Academy() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-xl border border-white/10 bg-black/60 px-5 py-4 backdrop-blur-md">
               <div>
-                <p className="font-display text-2xl uppercase tracking-wide text-arena-gold">KAKX Academy</p>
+                <p className="font-display text-2xl uppercase tracking-wide text-arena-lime">KAKX Academy</p>
                 <p className="text-xs text-zinc-400">Train. Improve. Compete.</p>
               </div>
-              <span className="rounded-full bg-arena-gold/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-arena-gold">
+              <span className="rounded-full bg-arena-lime/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-arena-lime">
                 Now Enrolling
               </span>
             </div>
@@ -56,7 +56,7 @@ export default function Academy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="eyebrow !border-arena-gold/40 !bg-arena-gold/10 !text-arena-gold"
+            className="eyebrow !border-arena-lime/40 !bg-arena-lime/10 !text-arena-lime"
           >
             Cricket Academy
           </motion.span>
@@ -67,7 +67,7 @@ export default function Academy() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
           >
-            Train Like <span className="text-arena-gold">A Pro</span>
+            Train Like <span className="text-arena-lime">A Pro</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -91,7 +91,7 @@ export default function Academy() {
                 transition={{ duration: 0.55, delay: 0.08 * i + 0.2, ease: "easeOut" as const }}
                 className="flex items-start gap-4 rounded-xl border border-white/8 bg-white/[0.03] p-4"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-arena-gold/25 to-arena-orange/15 text-arena-gold">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-arena-lime/25 to-arena-green/15 text-arena-lime">
                   <f.icon className="h-5 w-5" />
                 </span>
                 <div>
@@ -113,7 +113,7 @@ export default function Academy() {
               href={whatsappLink("Hi KAKX Arena! I want to join the Cricket Academy. Please share program details and timings.")}
               target="_blank"
               rel="noreferrer"
-              className="btn-primary !from-arena-gold !to-arena-amber"
+              className="btn-primary !from-arena-lime !to-arena-mint"
             >
               Join the Academy
             </a>

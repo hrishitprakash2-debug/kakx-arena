@@ -50,7 +50,7 @@ export default function Booking() {
 
   return (
     <section id="booking" className="section-pad relative overflow-hidden">
-      <div className="glow-blob left-1/2 top-[-10%] h-[420px] w-[620px] -translate-x-1/2 bg-arena-orange/12" />
+      <div className="glow-blob left-1/2 top-[-10%] h-[420px] w-[620px] -translate-x-1/2 bg-arena-green/12" />
       <div className="container-x relative max-w-4xl">
         <div className="mb-10 text-center">
           <motion.span
@@ -69,7 +69,7 @@ export default function Booking() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
           >
-            Reserve Your <span className="text-gradient-orange">Slot</span>
+            Reserve Your <span className="text-gradient-green">Slot</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -91,9 +91,9 @@ export default function Booking() {
                 <span
                   className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
                     i < step
-                      ? "bg-arena-orange text-black"
+                      ? "bg-arena-green text-black"
                       : i === step
-                        ? "border-2 border-arena-orange text-arena-orange"
+                        ? "border-2 border-arena-green text-arena-green"
                         : "border border-white/15 text-zinc-500"
                   }`}
                 >
@@ -108,7 +108,7 @@ export default function Booking() {
                 </span>
               </div>
               {i < STEPS.length - 1 && (
-                <span className={`h-px w-8 sm:w-14 ${i < step ? "bg-arena-orange" : "bg-white/10"}`} />
+                <span className={`h-px w-8 sm:w-14 ${i < step ? "bg-arena-green" : "bg-white/10"}`} />
               )}
             </div>
           ))}
@@ -121,7 +121,7 @@ export default function Booking() {
           transition={{ duration: 0.7, ease: "easeOut" as const }}
           className="relative overflow-hidden rounded-2xl border border-white/10 bg-arena-card p-6 sm:p-9"
         >
-          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-arena-orange via-arena-amber to-arena-orange" />
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-arena-green via-arena-mint to-arena-green" />
 
           <AnimatePresence mode="wait">
             {step === 0 && (
@@ -142,7 +142,7 @@ export default function Booking() {
                     }}
                     className={`flex flex-col items-center gap-2 rounded-xl border p-4 text-center transition-all duration-300 hover:-translate-y-1 ${
                       sport === s.id
-                        ? "border-arena-orange bg-arena-orange/15 shadow-[0_0_30px_rgba(255,107,0,0.25)]"
+                        ? "border-arena-green bg-arena-green/15 shadow-[0_0_30px_rgba(163,230,53,0.25)]"
                         : "border-white/10 bg-white/[0.03] hover:border-white/25"
                     }`}
                   >
@@ -166,7 +166,7 @@ export default function Booking() {
                 transition={{ duration: 0.3 }}
               >
                 <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                  <CalendarDays className="h-4 w-4 text-arena-orange" /> Pick a date
+                  <CalendarDays className="h-4 w-4 text-arena-green" /> Pick a date
                 </p>
                 <div className="flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                   {days.map((d) => (
@@ -175,7 +175,7 @@ export default function Booking() {
                       onClick={() => setDate(d.full)}
                       className={`flex min-w-[74px] shrink-0 flex-col items-center rounded-xl border px-3 py-3 transition-all duration-300 ${
                         date === d.full
-                          ? "border-arena-orange bg-arena-orange/15 text-white"
+                          ? "border-arena-green bg-arena-green/15 text-white"
                           : "border-white/10 bg-white/[0.03] text-zinc-300 hover:border-white/25"
                       }`}
                     >
@@ -188,7 +188,7 @@ export default function Booking() {
                 </div>
 
                 <p className="mb-3 mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                  <Clock className="h-4 w-4 text-arena-orange" /> Pick a time
+                  <Clock className="h-4 w-4 text-arena-green" /> Pick a time
                 </p>
                 <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
                   {timeSlots.map((t) => (
@@ -197,7 +197,7 @@ export default function Booking() {
                       onClick={() => setSlot(t)}
                       className={`rounded-lg border py-2.5 text-xs font-semibold transition-all duration-200 ${
                         slot === t
-                          ? "border-arena-orange bg-arena-orange text-black"
+                          ? "border-arena-green bg-arena-green text-black"
                           : "border-white/10 bg-white/[0.03] text-zinc-300 hover:border-white/30"
                       }`}
                     >
@@ -223,10 +223,10 @@ export default function Booking() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Rohit"
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white placeholder:text-zinc-600 focus:border-arena-orange focus:outline-none"
+                  className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white placeholder:text-zinc-600 focus:border-arena-green focus:outline-none"
                 />
-                <div className="mt-5 rounded-xl border border-arena-orange/20 bg-arena-orange/[0.07] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-arena-orange">
+                <div className="mt-5 rounded-xl border border-arena-green/20 bg-arena-green/[0.07] p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-arena-green">
                     Booking Summary
                   </p>
                   <p className="mt-2 text-sm text-zinc-300">
@@ -244,7 +244,7 @@ export default function Booking() {
                 </a>
                 <p className="mt-3 text-center text-xs text-zinc-500">
                   Opens WhatsApp with your booking details pre-filled — or call{" "}
-                  <a href="tel:+918375060708" className="text-arena-orange hover:underline">
+                  <a href="tel:+918375060708" className="text-arena-green hover:underline">
                     083750 60708
                   </a>
                 </p>

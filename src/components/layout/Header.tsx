@@ -43,7 +43,7 @@ export default function Header() {
       >
         <div className="container-x flex h-16 items-center justify-between sm:h-20">
           <a href="#top" className="flex items-baseline gap-1 font-display text-2xl tracking-wider sm:text-3xl">
-            <span className="text-gradient-orange">KAKX</span>
+            <span className="text-gradient-green">KAKX</span>
             <span className="text-white">ARENA</span>
           </a>
 
@@ -52,7 +52,7 @@ export default function Header() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm font-medium text-zinc-300 transition-colors hover:text-arena-orange"
+                className="text-sm font-medium text-zinc-300 transition-colors hover:text-arena-green"
               >
                 {l.label}
               </a>
@@ -90,7 +90,7 @@ export default function Header() {
           >
             <div className="container-x flex h-16 items-center justify-between">
               <span className="font-display text-2xl tracking-wider">
-                <span className="text-gradient-orange">KAKX</span>
+                <span className="text-gradient-green">KAKX</span>
                 <span className="text-white">ARENA</span>
               </span>
               <button
@@ -110,7 +110,7 @@ export default function Header() {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.06 * i, duration: 0.35, ease: "easeOut" as const }}
-                  className="font-display py-3 text-5xl uppercase tracking-wide text-zinc-200 transition-colors hover:text-arena-orange"
+                  className="font-display py-3 text-5xl uppercase tracking-wide text-zinc-200 transition-colors hover:text-arena-green"
                 >
                   {l.label}
                 </motion.a>

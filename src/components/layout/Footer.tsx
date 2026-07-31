@@ -17,7 +17,7 @@ const quickLinks = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/5">
-      <div className="glow-blob left-1/2 top-[-60%] h-[380px] w-[640px] -translate-x-1/2 bg-arena-orange/10" />
+      <div className="glow-blob left-1/2 top-[-60%] h-[380px] w-[640px] -translate-x-1/2 bg-arena-green/10" />
 
       {/* CTA banner */}
       <div className="container-x relative pt-20 sm:pt-24">
@@ -26,12 +26,12 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" as const }}
-          className="relative overflow-hidden rounded-3xl border border-arena-orange/30 bg-gradient-to-br from-arena-orange/15 via-arena-card to-arena-card p-8 text-center sm:p-14"
+          className="relative overflow-hidden rounded-3xl border border-arena-green/30 bg-gradient-to-br from-arena-green/15 via-arena-card to-arena-card p-8 text-center sm:p-14"
         >
           <div className="absolute inset-0 bg-noise" />
-          <div className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-arena-orange to-transparent" />
+          <div className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-arena-green to-transparent" />
           <p className="font-display relative text-6xl uppercase tracking-wide sm:text-8xl">
-            Ready To <span className="text-gradient-orange">Play?</span>
+            Ready To <span className="text-gradient-green">Play?</span>
           </p>
           <p className="relative mx-auto mt-4 max-w-md text-sm text-zinc-400">
             Your turf, court or net is waiting. Book in 30 seconds on WhatsApp —
@@ -57,7 +57,7 @@ export default function Footer() {
       <div className="container-x relative grid gap-10 py-16 sm:py-20 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
           <a href="#top" className="flex items-baseline gap-1 font-display text-3xl tracking-wider">
-            <span className="text-gradient-orange">KAKX</span>
+            <span className="text-gradient-green">KAKX</span>
             <span className="text-white">ARENA</span>
           </a>
           <p className="mt-1 font-display text-lg uppercase tracking-[0.25em] text-zinc-500">
@@ -73,7 +73,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition-all hover:border-arena-orange hover:text-arena-orange"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition-all hover:border-arena-green hover:text-arena-green"
             >
               <InstagramIcon className="h-4.5 w-4.5" />
             </a>
@@ -82,7 +82,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="WhatsApp"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition-all hover:border-arena-orange hover:text-arena-orange"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition-all hover:border-arena-green hover:text-arena-green"
             >
               <WhatsAppIcon className="h-4.5 w-4.5" />
             </a>
@@ -94,7 +94,7 @@ export default function Footer() {
           <ul className="mt-5 space-y-3">
             {quickLinks.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="text-sm text-zinc-400 transition-colors hover:text-arena-orange">
+                <a href={l.href} className="text-sm text-zinc-400 transition-colors hover:text-arena-green">
                   {l.label}
                 </a>
               </li>
@@ -107,7 +107,7 @@ export default function Footer() {
           <ul className="mt-5 space-y-3">
             {sports.map((s) => (
               <li key={s.id}>
-                <a href="#sports" className="text-sm text-zinc-400 transition-colors hover:text-arena-orange">
+                <a href="#sports" className="text-sm text-zinc-400 transition-colors hover:text-arena-green">
                   {s.name} <span className="text-zinc-600">₹{s.price}{s.unit}</span>
                 </a>
               </li>
@@ -119,12 +119,12 @@ export default function Footer() {
           <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">Contact</h4>
           <ul className="mt-5 space-y-4 text-sm text-zinc-400">
             <li className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-arena-orange" />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-arena-green" />
               {siteConfig.address}
             </li>
             <li>
-              <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-3 transition-colors hover:text-arena-orange">
-                <Phone className="h-4 w-4 shrink-0 text-arena-orange" /> {siteConfig.phoneDisplay}
+              <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-3 transition-colors hover:text-arena-green">
+                <Phone className="h-4 w-4 shrink-0 text-arena-green" /> {siteConfig.phoneDisplay}
               </a>
             </li>
             <li className="text-zinc-500">Open 24 Hours · 7 Days</li>

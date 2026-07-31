@@ -31,7 +31,7 @@ export default function Stats() {
       <div className="container-x grid grid-cols-2 gap-y-10 py-12 sm:py-16 lg:grid-cols-4">
         {stats.map((s) => (
           <div key={s.label} className="flex flex-col items-center gap-1.5 text-center">
-            <span className="font-display text-5xl tracking-wide text-gradient-orange sm:text-6xl">
+            <span className="font-display text-5xl tracking-wide text-gradient-green sm:text-6xl">
               <Counter value={s.value} decimals={s.decimals} suffix={s.suffix} />
             </span>
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">

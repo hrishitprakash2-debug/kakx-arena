@@ -9,7 +9,7 @@ const CricketBall = dynamic(() => import("@/components/three/CricketBall"), {
   ssr: false,
   loading: () => (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="h-40 w-40 animate-spinSlow rounded-full border-2 border-dashed border-arena-orange/40" />
+      <div className="h-40 w-40 animate-spinSlow rounded-full border-2 border-dashed border-arena-green/40" />
     </div>
   ),
 });
@@ -39,21 +39,21 @@ export default function Hero() {
           WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
         }}
       />
-      <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-orange/25" />
-      <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-gold/15" />
+      <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-green/25" />
+      <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-lime/15" />
 
       <div className="container-x relative grid min-h-[calc(100vh-5rem)] items-center gap-8 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-4">
         {/* text column */}
         <div className="relative z-10">
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible" className="mb-6 flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur">
-              <Star className="h-3.5 w-3.5 fill-arena-amber text-arena-amber" />
+              <Star className="h-3.5 w-3.5 fill-arena-mint text-arena-mint" />
               {siteConfig.rating} · {siteConfig.reviews} Google Reviews
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-arena-orange/40 bg-arena-orange/10 px-4 py-1.5 text-xs font-semibold text-arena-orange">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-arena-green/40 bg-arena-green/10 px-4 py-1.5 text-xs font-semibold text-arena-green">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-arena-orange opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-arena-orange" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-arena-green opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-arena-green" />
               </span>
               Open 24 Hours
             </span>
@@ -67,7 +67,7 @@ export default function Hero() {
             className="display-title text-[19vw] leading-[0.9] sm:text-8xl md:text-9xl"
           >
             KAKX
-            <span className="block text-gradient-orange">ARENA</span>
+            <span className="block text-gradient-green">ARENA</span>
           </motion.h1>
 
           <motion.p
@@ -123,10 +123,10 @@ export default function Hero() {
             className="mt-9 flex flex-col gap-3 text-sm text-zinc-400 sm:flex-row sm:items-center sm:gap-8"
           >
             <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-arena-orange" /> {siteConfig.address}
+              <MapPin className="h-4 w-4 text-arena-green" /> {siteConfig.address}
             </span>
-            <a href={`tel:${siteConfig.phone}`} className="inline-flex items-center gap-2 transition-colors hover:text-arena-orange">
-              <Phone className="h-4 w-4 text-arena-orange" /> {siteConfig.phoneDisplay}
+            <a href={`tel:${siteConfig.phone}`} className="inline-flex items-center gap-2 transition-colors hover:text-arena-green">
+              <Phone className="h-4 w-4 text-arena-green" /> {siteConfig.phoneDisplay}
             </a>
           </motion.div>
         </div>
@@ -138,13 +138,13 @@ export default function Hero() {
           transition={{ duration: 1.1, ease: "easeOut" as const }}
           className="relative z-0 h-[320px] sm:h-[420px] lg:h-[560px]"
         >
-          <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-orange/20 blur-[100px]" />
+          <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[100px]" />
           <CricketBall />
         </motion.div>
       </div>
 
       {/* marquee strip */}
-      <div className="relative z-10 -rotate-1 border-y-4 border-black bg-gradient-to-r from-arena-orange via-arena-amber to-arena-orange py-3.5 shadow-[0_0_60px_rgba(255,107,0,0.35)]">
+      <div className="relative z-10 -rotate-1 border-y-4 border-black bg-gradient-to-r from-arena-green via-arena-mint to-arena-green py-3.5 shadow-[0_0_60px_rgba(163,230,53,0.35)]">
         <div className="marquee-track flex w-max animate-marquee items-center gap-8 whitespace-nowrap">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="flex items-center gap-8 font-display text-lg uppercase tracking-[0.2em] text-black">

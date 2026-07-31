@@ -12,7 +12,7 @@ export default function Gallery() {
   return (
     <section id="gallery" className="section-pad relative overflow-hidden bg-arena-panel">
       <div className="absolute inset-0 bg-noise" />
-      <div className="glow-blob right-[-8%] top-[-15%] h-[380px] w-[380px] bg-arena-orange/10" />
+      <div className="glow-blob right-[-8%] top-[-15%] h-[380px] w-[380px] bg-arena-green/10" />
       <div className="container-x relative">
         <div className="mb-12 text-center">
           <motion.span
@@ -31,7 +31,7 @@ export default function Gallery() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
           >
-            Seen In <span className="text-gradient-orange">Action</span>
+            Seen In <span className="text-gradient-green">Action</span>
           </motion.h2>
         </div>
 
@@ -62,7 +62,7 @@ export default function Gallery() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100 sm:opacity-100" />
-              <span className="absolute left-3 top-3 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-arena-orange backdrop-blur">
+              <span className="absolute left-3 top-3 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-arena-green backdrop-blur">
                 {g.tag}
               </span>
               <span className="absolute bottom-3 left-3 right-3 text-xs font-medium text-white opacity-100 sm:translate-y-2 sm:opacity-0 sm:transition-all sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">

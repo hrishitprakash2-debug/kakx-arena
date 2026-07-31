@@ -6,10 +6,10 @@ import Image from "next/image";
 import { sports, whatsappLink } from "@/data/site";
 
 const accentMap: Record<string, { glow: string; text: string; border: string }> = {
-  orange: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(255,107,0,0.45)]", text: "text-arena-orange", border: "hover:border-arena-orange/60" },
-  gold: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(232,184,75,0.45)]", text: "text-arena-gold", border: "hover:border-arena-gold/60" },
+  orange: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(163,230,53,0.45)]", text: "text-arena-green", border: "hover:border-arena-green/60" },
+  gold: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(201,242,74,0.45)]", text: "text-arena-lime", border: "hover:border-arena-lime/60" },
   green: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(74,222,128,0.4)]", text: "text-emerald-400", border: "hover:border-emerald-400/60" },
-  blue: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(96,165,250,0.4)]", text: "text-sky-400", border: "hover:border-sky-400/60" },
+  blue: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(110,231,183,0.4)]", text: "text-emerald-300", border: "hover:border-emerald-300/60" },
 };
 
 const container = {
@@ -25,7 +25,7 @@ const item = {
 export default function Sports() {
   return (
     <section id="sports" className="section-pad relative overflow-hidden">
-      <div className="glow-blob right-[-10%] top-[10%] h-[400px] w-[400px] bg-arena-orange/10" />
+      <div className="glow-blob right-[-10%] top-[10%] h-[400px] w-[400px] bg-arena-green/10" />
       <div className="container-x relative">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 sm:mb-16 lg:flex-row lg:items-end">
           <div>
@@ -45,7 +45,7 @@ export default function Sports() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
             >
-              Pick Your <span className="text-gradient-orange">Game</span>
+              Pick Your <span className="text-gradient-green">Game</span>
             </motion.h2>
           </div>
           <motion.p
@@ -76,7 +76,7 @@ export default function Sports() {
                 className={`group card-sheen relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-arena-card transition-all duration-500 hover:-translate-y-2 ${a.glow} ${a.border}`}
               >
                 {sport.badge && (
-                  <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-arena-gold to-arena-amber px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-black">
+                  <span className="absolute left-4 top-4 z-10 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-arena-lime to-arena-mint px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-black">
                     <Zap className="h-3 w-3" /> {sport.badge}
                   </span>
                 )}
@@ -124,7 +124,7 @@ export default function Sports() {
                     )}
                     target="_blank"
                     rel="noreferrer"
-                    className={`mt-6 inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 group-hover:border-arena-orange group-hover:bg-arena-orange group-hover:text-black ${a.text}`}
+                    className={`mt-6 inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 group-hover:border-arena-green group-hover:bg-arena-green group-hover:text-black ${a.text}`}
                   >
                     Book Now <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
