@@ -1,0 +1,8 @@
+node_modules
+dist
+data/bookings.json
+data/contacts.json
+.env*
+!.env.example
+*.tsbuildinfo
+.vercel
