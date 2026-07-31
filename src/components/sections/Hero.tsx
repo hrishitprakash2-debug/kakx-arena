@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
 import dynamic from "next/dynamic";
 import { marqueeItems, siteConfig, whatsappLink } from "@/data/site";
@@ -23,22 +23,59 @@ const fadeUp = {
   }),
 };
 
+/** letter-by-letter entrance for the display headline */
+function StaggerTitle({ text, gradient }: { text: string; gradient?: boolean }) {
+  const letters = text.split("");
+  return (
+    <span
+      className={`inline-block ${gradient ? "text-gradient-green" : ""}`}
+      aria-label={text}
+    >
+      {letters.map((ch, i) => (
+        <motion.span
+          key={i}
+          aria-hidden
+          initial={{ opacity: 0, y: 70, rotate: 6 }}
+          animate={{ opacity: 1, y: 0, rotate: 0 }}
+          transition={{
+            duration: 0.65,
+            delay: 0.35 + i * 0.05,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="inline-block"
+        >
+          {ch === " " ? "\u00A0" : ch}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 800], [0, 170]);
+  const bgOpacity = useTransform(scrollY, [0, 600], [0.14, 0]);
+
   return (
     <section id="top" className="relative overflow-hidden pt-16 sm:pt-20">
       {/* background layers */}
       <div className="absolute inset-0 bg-grid opacity-60" />
       <div className="absolute inset-0 bg-noise" />
-      <div
-        className="absolute inset-0 opacity-[0.14]"
-        style={{
-          backgroundImage: "url(/images/hero.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          maskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
-          WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
-        }}
-      />
+      <motion.div
+        style={{ y: bgY, opacity: bgOpacity }}
+        className="absolute inset-0"
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url(/images/hero.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            maskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
+          }}
+        />
+      </motion.div>
       <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-green/25" />
       <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-lime/15" />
 
@@ -59,16 +96,12 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <motion.h1
-            custom={1}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="display-title text-[19vw] leading-[0.9] sm:text-8xl md:text-9xl"
-          >
-            KAKX
-            <span className="block text-gradient-green">ARENA</span>
-          </motion.h1>
+          <h1 className="display-title text-[19vw] leading-[0.9] sm:text-8xl md:text-9xl">
+            <StaggerTitle text="KAKX" />
+            <span className="block">
+              <StaggerTitle text="ARENA" gradient />
+            </span>
+          </h1>
 
           <motion.p
             custom={2}
@@ -145,7 +178,7 @@ export default function Hero() {
       </div>
 
       {/* marquee strip */}
-      <div className="relative z-10 -rotate-1 border-y-4 border-black bg-gradient-to-r from-arena-green via-arena-mint to-arena-green py-3.5 shadow-[0_0_60px_rgba(163,230,53,0.35)]">
+      <div className="relative z-10 -rotate-1 border-y-4 border-black bg-gradient-to-r from-arena-green via-arena-lime to-arena-green py-3.5 shadow-[0_0_60px_rgba(163,230,53,0.35)]">
         <div className="marquee-track flex w-max animate-marquee items-center gap-8 whitespace-nowrap">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="flex items-center gap-8 font-display text-lg uppercase tracking-[0.2em] text-black">

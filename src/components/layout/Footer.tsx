@@ -2,8 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
+import dynamic from "next/dynamic";
 import { InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, sports, whatsappLink } from "@/data/site";
+
+const Shuttlecock = dynamic(() => import("@/components/three/Shuttlecock"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const quickLinks = [
   { href: "#sports", label: "Sports" },
@@ -30,6 +36,13 @@ export default function Footer() {
         >
           <div className="absolute inset-0 bg-noise" />
           <div className="absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-arena-green to-transparent" />
+          {/* 3D shuttlecock accents */}
+          <div className="pointer-events-none absolute -right-4 top-1/2 hidden h-44 w-44 -translate-y-1/2 sm:block lg:right-10 lg:h-52 lg:w-52">
+            <Shuttlecock />
+          </div>
+          <div className="pointer-events-none absolute -left-6 bottom-2 hidden h-28 w-28 -scale-x-100 sm:block lg:left-16">
+            <Shuttlecock />
+          </div>
           <p className="font-display relative text-6xl uppercase tracking-wide sm:text-8xl">
             Ready To <span className="text-gradient-green">Play?</span>
           </p>

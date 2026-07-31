@@ -42,9 +42,17 @@ export default function Header() {
         }`}
       >
         <div className="container-x flex h-16 items-center justify-between sm:h-20">
-          <a href="#top" className="flex items-baseline gap-1 font-display text-2xl tracking-wider sm:text-3xl">
-            <span className="text-gradient-green">KAKX</span>
-            <span className="text-white">ARENA</span>
+          <a href="#top" className="flex items-center gap-2.5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/icon.png"
+              alt=""
+              className="h-8 w-8 rounded-lg border border-arena-green/30 sm:h-9 sm:w-9"
+            />
+            <span className="flex items-baseline gap-1 font-display text-2xl tracking-wider sm:text-3xl">
+              <span className="text-gradient-green">KAKX</span>
+              <span className="text-white">ARENA</span>
+            </span>
           </a>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -90,9 +98,13 @@ export default function Header() {
             className="fixed inset-0 z-[60] flex flex-col bg-black/95 backdrop-blur-2xl lg:hidden"
           >
             <div className="container-x flex h-16 items-center justify-between">
-              <span className="font-display text-2xl tracking-wider">
-                <span className="text-gradient-green">KAKX</span>
-                <span className="text-white">ARENA</span>
+              <span className="flex items-center gap-2.5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/icon.png" alt="" className="h-8 w-8 rounded-lg border border-arena-green/30" />
+                <span className="font-display text-2xl tracking-wider">
+                  <span className="text-gradient-green">KAKX</span>
+                  <span className="text-white">ARENA</span>
+                </span>
               </span>
               <button
                 onClick={() => setOpen(false)}

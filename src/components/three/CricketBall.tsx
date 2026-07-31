@@ -5,6 +5,57 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sparkles } from "@react-three/drei";
 import * as THREE from "three";
 
+/** Mini sport objects orbiting the ball on a faint ring. */
+function OrbitKit() {
+  const group = useRef<THREE.Group>(null);
+  useFrame((_, delta) => {
+    if (group.current) group.current.rotation.y += delta * 0.22;
+  });
+
+  return (
+    <group ref={group}>
+      {/* ring */}
+      <mesh rotation={[Math.PI / 2.35, 0.35, 0]}>
+        <torusGeometry args={[2.15, 0.012, 8, 128]} />
+        <meshBasicMaterial color="#A3E635" transparent opacity={0.3} />
+      </mesh>
+      {/* mini stump */}
+      <group position={[2.15, 0.12, 0]}>
+        <mesh>
+          <cylinderGeometry args={[0.045, 0.055, 0.45, 12]} />
+          <meshStandardMaterial color="#e8cfa0" roughness={0.6} />
+        </mesh>
+        <mesh position={[0, 0.27, 0]}>
+          <sphereGeometry args={[0.055, 12, 12]} />
+          <meshStandardMaterial color="#e8cfa0" roughness={0.6} />
+        </mesh>
+      </group>
+      {/* mini shuttlecock */}
+      <group position={[-1.08, 0, 1.86]} rotation={[0.25, 0.4, 0]}>
+        <mesh>
+          <coneGeometry args={[0.13, 0.24, 16, 1, true]} />
+          <meshStandardMaterial color="#ffffff" side={THREE.DoubleSide} roughness={0.5} />
+        </mesh>
+        <mesh position={[0, 0.15, 0]}>
+          <sphereGeometry args={[0.055, 12, 12]} />
+          <meshStandardMaterial color="#f2f2f2" roughness={0.4} />
+        </mesh>
+      </group>
+      {/* mini pickleball paddle */}
+      <group position={[-1.08, 0, -1.86]} rotation={[0.3, 0.6, 0.15]}>
+        <mesh position={[0, -0.12, 0]}>
+          <cylinderGeometry args={[0.022, 0.022, 0.24, 10]} />
+          <meshStandardMaterial color="#8a5a2b" roughness={0.7} />
+        </mesh>
+        <mesh position={[0, 0.16, 0]} scale={[1, 0.32, 1]}>
+          <sphereGeometry args={[0.15, 20, 20]} />
+          <meshStandardMaterial color="#A3E635" roughness={0.4} />
+        </mesh>
+      </group>
+    </group>
+  );
+}
+
 function CricketBall({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: number }> }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
@@ -28,14 +79,13 @@ function CricketBall({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: 
           <MeshDistortMaterial
             color="#9BE33D"
             emissive="#527A14"
-            emissiveIntensity={0.25}
+            emissiveIntensity={0.3}
             roughness={0.35}
             metalness={0.15}
             distort={0.09}
             speed={1.6}
           />
         </mesh>
-        {/* seams */}
         <mesh>
           <torusGeometry args={[1.02, 0.03, 16, 96]} />
           <meshStandardMaterial color="#f5f5dc" roughness={0.3} />
@@ -44,12 +94,12 @@ function CricketBall({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: 
           <torusGeometry args={[1.02, 0.03, 16, 96]} />
           <meshStandardMaterial color="#f5f5dc" roughness={0.3} />
         </mesh>
-        {/* glow shell */}
         <mesh>
           <sphereGeometry args={[1.35, 32, 32]} />
           <meshBasicMaterial color="#A3E635" transparent opacity={0.07} side={THREE.BackSide} />
         </mesh>
       </Float>
+      <OrbitKit />
       <Sparkles count={45} scale={7} size={2.4} speed={0.35} color="#C6F56A" opacity={0.7} />
     </group>
   );

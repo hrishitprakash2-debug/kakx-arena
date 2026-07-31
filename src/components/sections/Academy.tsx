@@ -3,7 +3,13 @@
 import { motion } from "framer-motion";
 import { Check, Target, TrendingUp } from "lucide-react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { whatsappLink } from "@/data/site";
+
+const Stumps = dynamic(() => import("@/components/three/Stumps"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const features = [
   { icon: Target, title: "Bowling Machine", desc: "Face real match-speed deliveries and sharpen your timing." },
@@ -19,6 +25,10 @@ export default function Academy() {
       <div className="glow-blob bottom-[-25%] right-[-10%] h-[380px] w-[380px] bg-arena-green/10" />
 
       <div className="container-x relative grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:gap-16">
+        {/* floating 3D stumps — desktop accent */}
+        <div className="pointer-events-none absolute right-4 top-8 hidden h-[340px] w-[300px] opacity-90 lg:block">
+          <Stumps />
+        </div>
         {/* image side */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
