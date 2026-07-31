@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Is there professional coaching?",
-    a: "Yes — our cricket academy has certified coaches and a bowling machine, with structured programs from beginner to advanced.",
+    a: "Yes — our academy offers certified coaching for both cricket (with a bowling machine and structured nets) and badminton (footwork, strokes and match play), from beginner to advanced.",
   },
   {
     q: "Can I host events, tournaments or corporate games?",

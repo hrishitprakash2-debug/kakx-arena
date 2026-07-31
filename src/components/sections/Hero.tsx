@@ -121,11 +121,11 @@ export default function Hero() {
             className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg"
           >
             Wave City&apos;s premium sports destination —{" "}
-            <span className="font-semibold text-white">Box Cricket</span>, a pro{" "}
-            <span className="font-semibold text-white">Cricket Academy</span>,{" "}
-            <span className="font-semibold text-white">Badminton</span> &{" "}
-            <span className="font-semibold text-white">Pickleball</span>. Floodlit nights,
-            pro coaching, open 24 hours.
+            <span className="font-semibold text-white">Box Cricket</span>,{" "}
+            <span className="font-semibold text-white">Badminton</span>,{" "}
+            <span className="font-semibold text-white">Pickleball</span> — plus a pro{" "}
+            <span className="font-semibold text-white">Academy</span> with cricket & badminton
+            coaching. Floodlit nights, open 24 hours.
           </motion.p>
 
           <motion.div

@@ -46,15 +46,15 @@ export const sports: Sport[] = [
     accent: "orange",
   },
   {
-    id: "cricket-academy",
-    name: "Cricket Academy",
-    surface: "Pro Coaching & Bowling Machine",
+    id: "academy",
+    name: "Pro Academy",
+    surface: "Cricket & Badminton Coaching",
     price: 300,
     unit: "/session",
     emoji: "🎯",
     image: "/images/g3.jpg",
-    tagline: "Train with professional coaches and a bowling machine.",
-    features: ["Bowling machine", "Pro coaches", "Batting & bowling drills", "Match practice"],
+    tagline: "Pro coaching for cricket and badminton — bowling machine, footwork drills and match practice.",
+    features: ["Bowling machine", "Cricket & badminton coaching", "All skill levels", "Match practice"],
     accent: "gold",
     badge: "PRO COACHING",
     featured: true,
@@ -110,7 +110,7 @@ export const reviews = [
   {
     name: "Aman K.",
     text: "The academy coaches really know their stuff. Bowling machine practice has improved my batting timing a lot in just a month.",
-    tag: "Cricket Academy",
+    tag: "Academy",
   },
   {
     name: "Priya M.",
@@ -127,7 +127,7 @@ export const stats = [
 ];
 
 export const marqueeItems = [
-  "BOX CRICKET", "CRICKET ACADEMY", "BADMINTON", "PICKLEBALL",
+  "BOX CRICKET", "PRO ACADEMY", "BADMINTON", "PICKLEBALL",
   "OPEN 24 HOURS", "FLOODLIT NIGHTS", "PRO COACHING", "BOOK ON WHATSAPP",
 ];
 

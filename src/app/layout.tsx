@@ -19,7 +19,7 @@ const SITE_URL = "https://kakx-arena.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "KAKX Arena — Box Cricket, Cricket Academy, Badminton & Pickleball | Ghaziabad",
+  title: "KAKX Arena — Box Cricket, Badminton, Pickleball & Pro Academy | Ghaziabad",
   description: siteConfig.description,
   keywords: [
     "KAKX Arena", "sports arena Ghaziabad", "box cricket Wave City", "cricket academy Ghaziabad",

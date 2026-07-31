@@ -41,7 +41,7 @@ export default function Local() {
         >
           Based in Sector-11, Wave City, KAKX Arena is the go-to venue for{" "}
           <span className="font-semibold text-white">box cricket in Ghaziabad</span>,{" "}
-          <span className="font-semibold text-white">cricket coaching</span>,{" "}
+          <span className="font-semibold text-white">cricket & badminton coaching</span>,{" "}
           <span className="font-semibold text-white">badminton courts</span> and{" "}
           <span className="font-semibold text-white">pickleball near Wave City</span> —
           open 24 hours with floodlit courts, pro coaching and easy parking. Just minutes

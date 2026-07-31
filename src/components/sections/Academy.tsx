@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Target, TrendingUp } from "lucide-react";
+import { Check, Feather, Target, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { whatsappLink } from "@/data/site";
@@ -13,7 +13,8 @@ const Stumps = dynamic(() => import("@/components/three/Stumps"), {
 
 const features = [
   { icon: Target, title: "Bowling Machine", desc: "Face real match-speed deliveries and sharpen your timing." },
-  { icon: TrendingUp, title: "Pro Coaching", desc: "Certified coaches for batting, bowling, fielding & fitness." },
+  { icon: Feather, title: "Badminton Coaching", desc: "Footwork, strokes and match play on our synthetic courts." },
+  { icon: TrendingUp, title: "Pro Coaches", desc: "Certified cricket & badminton coaches for every level." },
   { icon: Check, title: "Structured Programs", desc: "Beginner to advanced — weekly drills, nets and match practice." },
 ];
 
@@ -37,7 +38,7 @@ export default function Academy() {
           <div className="relative overflow-hidden rounded-2xl border border-arena-lime/25">
             <Image
               src="/images/g3.jpg"
-              alt="KAKX Cricket Academy training"
+              alt="KAKX Academy training session — cricket & badminton coaching"
               width={1280}
               height={720}
               className="h-[320px] w-full object-cover sm:h-[420px]"
@@ -68,7 +69,7 @@ export default function Academy() {
             transition={{ duration: 0.5 }}
             className="eyebrow !border-arena-lime/40 !bg-arena-lime/10 !text-arena-lime"
           >
-            Cricket Academy
+            Pro Academy — Cricket & Badminton
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 26 }}
@@ -86,9 +87,10 @@ export default function Academy() {
             transition={{ duration: 0.6, delay: 0.18 }}
             className="mt-5 max-w-lg text-base leading-relaxed text-zinc-400"
           >
-            Our cricket academy pairs professional coaching with a bowling machine and
-            structured drills — whether you&apos;re starting from zero or fine-tuning for
-            match day.
+            KAKX Academy offers professional coaching for <span className="font-semibold text-white">cricket</span> and{" "}
+            <span className="font-semibold text-white">badminton</span>. Cricketers train on the
+            bowling machine with structured nets; badminton players build footwork, strokes and
+            match play on our synthetic courts.
           </motion.p>
 
           <div className="mt-8 space-y-5">
@@ -120,7 +122,7 @@ export default function Academy() {
             className="mt-9 flex flex-col gap-4 sm:flex-row"
           >
             <a
-              href={whatsappLink("Hi KAKX Arena! I want to join the Cricket Academy. Please share program details and timings.")}
+              href={whatsappLink("Hi KAKX Arena! I want to join the Academy (cricket/badminton coaching). Please share program details and timings.")}
               data-wa-label="academy-join"
               target="_blank"
               rel="noreferrer"
