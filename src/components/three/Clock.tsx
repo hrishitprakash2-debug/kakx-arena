@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useInView } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -65,7 +66,11 @@ function Clock() {
 }
 
 export default function ClockCanvas() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { margin: "300px" });
   return (
+    <div ref={ref} className="absolute inset-0">
+    {inView && (
     <Canvas
       camera={{ position: [0, 0, 1.9], fov: 45 }}
       dpr={[1, 1.5]}
@@ -78,5 +83,7 @@ export default function ClockCanvas() {
         <Clock />
       </Float>
     </Canvas>
+    )}
+    </div>
   );
 }

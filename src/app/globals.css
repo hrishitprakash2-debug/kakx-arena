@@ -15,6 +15,20 @@ section[id] {
   scroll-margin-top: 5.5rem;
 }
 
+/* ---------- mobile performance ----------
+   lighter blur, no animated blur/shimmer, no backdrop blur on fixed bars */
+@media (max-width: 640px) {
+  .glow-blob {
+    filter: blur(28px);
+  }
+  .animate-pulseGlow {
+    animation: none;
+  }
+  .text-gradient-green {
+    animation: none;
+  }
+}
+
 body {
   background: #0b0b0d;
   color: #fafafa;

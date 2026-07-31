@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useInView } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -59,9 +60,12 @@ function Stumps({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: numbe
 
 export default function StumpsCanvas() {
   const mouse = useRef({ x: 0, y: 0 });
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { margin: "300px" });
 
   return (
     <div
+      ref={ref}
       className="absolute inset-0"
       onMouseMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect();
@@ -69,16 +73,18 @@ export default function StumpsCanvas() {
         mouse.current.y = (e.clientY - r.top) / r.height - 0.5;
       }}
     >
-      <Canvas
-        camera={{ position: [0, 0, 3.1], fov: 45 }}
-        dpr={[1, 1.5]}
-        gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
-      >
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[3, 5, 4]} intensity={1.5} color="#eaffd0" />
-        <pointLight position={[-3, -1, 2]} intensity={0.9} color="#A3E635" />
-        <Stumps mouse={mouse} />
-      </Canvas>
+      {inView && (
+        <Canvas
+          camera={{ position: [0, 0, 3.1], fov: 45 }}
+          dpr={[1, 1.5]}
+          gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
+        >
+          <ambientLight intensity={0.8} />
+          <directionalLight position={[3, 5, 4]} intensity={1.5} color="#eaffd0" />
+          <pointLight position={[-3, -1, 2]} intensity={0.9} color="#A3E635" />
+          <Stumps mouse={mouse} />
+        </Canvas>
+      )}
     </div>
   );
 }

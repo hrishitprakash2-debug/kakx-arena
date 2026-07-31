@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sparkles } from "@react-three/drei";
+import { useInView } from "framer-motion";
 import * as THREE from "three";
 
 /** Mini sport objects orbiting the ball on a faint ring. */
@@ -107,9 +108,13 @@ function CricketBall({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: 
 
 export default function CricketBallCanvas() {
   const mouse = useRef({ x: 0, y: 0 });
+  const ref = useRef<HTMLDivElement>(null);
+  // mount the WebGL context only while near the viewport — saves battery/GPU off-screen
+  const inView = useInView(ref, { margin: "300px" });
 
   return (
     <div
+      ref={ref}
       className="absolute inset-0"
       onMouseMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect();
@@ -117,16 +122,18 @@ export default function CricketBallCanvas() {
         mouse.current.y = (e.clientY - r.top) / r.height - 0.5;
       }}
     >
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 50 }}
-        dpr={[1, 1.5]}
-        gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
-      >
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[4, 5, 6]} intensity={1.6} color="#eaffd0" />
-        <pointLight position={[-4, -2, 2]} intensity={1.2} color="#A3E635" />
-        <CricketBall mouse={mouse} />
-      </Canvas>
+      {inView && (
+        <Canvas
+          camera={{ position: [0, 0, 5], fov: 50 }}
+          dpr={[1, 1.5]}
+          gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
+        >
+          <ambientLight intensity={0.7} />
+          <directionalLight position={[4, 5, 6]} intensity={1.6} color="#eaffd0" />
+          <pointLight position={[-4, -2, 2]} intensity={1.2} color="#A3E635" />
+          <CricketBall mouse={mouse} />
+        </Canvas>
+      )}
     </div>
   );
 }

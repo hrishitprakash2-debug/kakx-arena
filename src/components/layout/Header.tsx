@@ -37,7 +37,7 @@ export default function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "border-b border-white/10 bg-black/70 backdrop-blur-xl"
+            ? "border-b border-white/10 bg-black/85 backdrop-blur-xl max-md:bg-black/95 max-md:backdrop-blur-none"
             : "bg-transparent"
         }`}
       >
@@ -95,7 +95,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-black/95 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col bg-black/95 lg:hidden"
           >
             <div className="container-x flex h-16 items-center justify-between">
               <span className="flex items-center gap-2.5">

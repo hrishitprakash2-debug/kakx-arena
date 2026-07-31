@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useInView } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Sparkles } from "@react-three/drei";
 import * as THREE from "three";
@@ -54,7 +55,11 @@ function Trophy() {
 }
 
 export default function TrophyCanvas() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { margin: "300px" });
   return (
+    <div ref={ref} className="absolute inset-0">
+    {inView && (
     <Canvas
       camera={{ position: [0, 0, 2.2], fov: 45 }}
       dpr={[1, 1.5]}
@@ -67,5 +72,7 @@ export default function TrophyCanvas() {
         <Trophy />
       </Float>
     </Canvas>
+    )}
+    </div>
   );
 }

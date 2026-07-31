@@ -7,7 +7,7 @@ import { siteConfig, whatsappLink } from "@/data/site";
 /** Sticky bottom CTA bar — mobile only. Call + WhatsApp always one tap away. */
 export default function MobileCta() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-arena-green/25 bg-black/90 backdrop-blur-xl md:hidden"
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-arena-green/25 bg-black/95 md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="grid grid-cols-2 gap-2 p-3">
         <a

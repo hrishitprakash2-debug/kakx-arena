@@ -54,8 +54,8 @@ export default function Reviews() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative flex items-center gap-5 overflow-visible rounded-2xl border border-arena-lime/25 bg-gradient-to-br from-arena-lime/10 to-transparent p-6"
           >
-            {/* 3D trophy accent */}
-            <div className="pointer-events-none absolute -right-3 -top-5 h-20 w-20 opacity-90">
+            {/* 3D trophy accent — hidden on phones for performance */}
+            <div className="pointer-events-none absolute -right-3 -top-5 hidden h-20 w-20 opacity-90 sm:block">
               <Trophy />
             </div>
             <span className="font-display text-7xl tracking-wide text-gradient-green">
