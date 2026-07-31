@@ -8,6 +8,7 @@ import Academy from "@/components/sections/Academy";
 import Booking from "@/components/sections/Booking";
 import Gallery from "@/components/sections/Gallery";
 import Reviews from "@/components/sections/Reviews";
+import Local from "@/components/sections/Local";
 import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Booking />
       <Gallery />
       <Reviews />
+      <Local />
       <Faq />
       <Contact />
       <Footer />
