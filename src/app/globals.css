@@ -27,6 +27,9 @@ section[id] {
   .text-gradient-green {
     animation: none;
   }
+  .animate-marquee {
+    animation-duration: 45s;
+  }
 }
 
 body {

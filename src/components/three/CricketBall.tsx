@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Sparkles } from "@react-three/drei";
+import { Float, Sparkles } from "@react-three/drei";
 import { useInView } from "framer-motion";
 import * as THREE from "three";
 
@@ -15,41 +15,37 @@ function OrbitKit() {
 
   return (
     <group ref={group}>
-      {/* ring */}
       <mesh rotation={[Math.PI / 2.35, 0.35, 0]}>
-        <torusGeometry args={[2.15, 0.012, 8, 128]} />
+        <torusGeometry args={[2.15, 0.012, 8, 96]} />
         <meshBasicMaterial color="#A3E635" transparent opacity={0.3} />
       </mesh>
-      {/* mini stump */}
       <group position={[2.15, 0.12, 0]}>
         <mesh>
-          <cylinderGeometry args={[0.045, 0.055, 0.45, 12]} />
+          <cylinderGeometry args={[0.045, 0.055, 0.45, 10]} />
           <meshStandardMaterial color="#e8cfa0" roughness={0.6} />
         </mesh>
         <mesh position={[0, 0.27, 0]}>
-          <sphereGeometry args={[0.055, 12, 12]} />
+          <sphereGeometry args={[0.055, 10, 10]} />
           <meshStandardMaterial color="#e8cfa0" roughness={0.6} />
         </mesh>
       </group>
-      {/* mini shuttlecock */}
       <group position={[-1.08, 0, 1.86]} rotation={[0.25, 0.4, 0]}>
         <mesh>
-          <coneGeometry args={[0.13, 0.24, 16, 1, true]} />
+          <coneGeometry args={[0.13, 0.24, 12, 1, true]} />
           <meshStandardMaterial color="#ffffff" side={THREE.DoubleSide} roughness={0.5} />
         </mesh>
         <mesh position={[0, 0.15, 0]}>
-          <sphereGeometry args={[0.055, 12, 12]} />
+          <sphereGeometry args={[0.055, 10, 10]} />
           <meshStandardMaterial color="#f2f2f2" roughness={0.4} />
         </mesh>
       </group>
-      {/* mini pickleball paddle */}
       <group position={[-1.08, 0, -1.86]} rotation={[0.3, 0.6, 0.15]}>
         <mesh position={[0, -0.12, 0]}>
-          <cylinderGeometry args={[0.022, 0.022, 0.24, 10]} />
+          <cylinderGeometry args={[0.022, 0.022, 0.24, 8]} />
           <meshStandardMaterial color="#8a5a2b" roughness={0.7} />
         </mesh>
         <mesh position={[0, 0.16, 0]} scale={[1, 0.32, 1]}>
-          <sphereGeometry args={[0.15, 20, 20]} />
+          <sphereGeometry args={[0.15, 14, 14]} />
           <meshStandardMaterial color="#A3E635" roughness={0.4} />
         </mesh>
       </group>
@@ -76,32 +72,31 @@ function CricketBall({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: 
     <group ref={groupRef}>
       <Float speed={2.2} rotationIntensity={0.4} floatIntensity={0.9}>
         <mesh ref={meshRef}>
-          <sphereGeometry args={[1, 64, 64]} />
-          <MeshDistortMaterial
+          {/* 40-segment sphere + plain standard material — NO distort shader (mobile GPU killer) */}
+          <sphereGeometry args={[1, 40, 40]} />
+          <meshStandardMaterial
             color="#9BE33D"
             emissive="#527A14"
-            emissiveIntensity={0.3}
+            emissiveIntensity={0.35}
             roughness={0.35}
             metalness={0.15}
-            distort={0.09}
-            speed={1.6}
           />
         </mesh>
         <mesh>
-          <torusGeometry args={[1.02, 0.03, 16, 96]} />
+          <torusGeometry args={[1.02, 0.03, 12, 72]} />
           <meshStandardMaterial color="#f5f5dc" roughness={0.3} />
         </mesh>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[1.02, 0.03, 16, 96]} />
+          <torusGeometry args={[1.02, 0.03, 12, 72]} />
           <meshStandardMaterial color="#f5f5dc" roughness={0.3} />
         </mesh>
         <mesh>
-          <sphereGeometry args={[1.35, 32, 32]} />
+          <sphereGeometry args={[1.35, 20, 20]} />
           <meshBasicMaterial color="#A3E635" transparent opacity={0.07} side={THREE.BackSide} />
         </mesh>
       </Float>
       <OrbitKit />
-      <Sparkles count={45} scale={7} size={2.4} speed={0.35} color="#C6F56A" opacity={0.7} />
+      <Sparkles count={18} scale={7} size={2.2} speed={0.35} color="#C6F56A" opacity={0.55} />
     </group>
   );
 }
@@ -111,6 +106,11 @@ export default function CricketBallCanvas() {
   const ref = useRef<HTMLDivElement>(null);
   // mount the WebGL context only while near the viewport — saves battery/GPU off-screen
   const inView = useInView(ref, { margin: "300px" });
+  // phones render at device resolution (no supersampling) — big GPU saving
+  const dpr =
+    typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches
+      ? [1, 1]
+      : [1, 1.5];
 
   return (
     <div
@@ -125,7 +125,7 @@ export default function CricketBallCanvas() {
       {inView && (
         <Canvas
           camera={{ position: [0, 0, 5], fov: 50 }}
-          dpr={[1, 1.5]}
+          dpr={dpr}
           gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
         >
           <ambientLight intensity={0.7} />

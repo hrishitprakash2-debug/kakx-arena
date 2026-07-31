@@ -172,13 +172,13 @@ export default function Hero() {
           transition={{ duration: 1.1, ease: "easeOut" as const }}
           className="relative z-0 h-[300px] sm:h-[420px] lg:h-[560px]"
         >
-          <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[100px]" />
+          <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[60px] max-sm:blur-[24px]" />
           <CricketBall />
         </motion.div>
       </div>
 
-      {/* marquee strip */}
-      <div className="relative z-10 -rotate-1 border-y-4 border-black bg-gradient-to-r from-arena-green via-arena-lime to-arena-green py-3.5 shadow-[0_0_60px_rgba(163,230,53,0.35)]">
+      {/* marquee strip — not rotated on phones (rotation forces a huge GPU layer) */}
+      <div className="relative z-10 -rotate-1 border-y-4 border-black bg-gradient-to-r from-arena-green via-arena-lime to-arena-green py-3.5 shadow-[0_0_60px_rgba(163,230,53,0.35)] max-sm:rotate-0 max-sm:shadow-none">
         <div className="marquee-track flex w-max animate-marquee items-center gap-8 whitespace-nowrap">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="flex items-center gap-8 font-display text-lg uppercase tracking-[0.2em] text-black">
