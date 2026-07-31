@@ -40,6 +40,7 @@ export default function Footer() {
           <div className="relative mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href={whatsappLink("Hi KAKX Arena! I want to book a slot.")}
+              data-wa-label="footer-book"
               target="_blank"
               rel="noreferrer"
               className="btn-primary"

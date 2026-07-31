@@ -10,6 +10,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* anchor sections offset for fixed header */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   background: #0b0b0d;
   color: #fafafa;

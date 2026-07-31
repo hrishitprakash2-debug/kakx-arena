@@ -111,6 +111,7 @@ export default function Academy() {
           >
             <a
               href={whatsappLink("Hi KAKX Arena! I want to join the Cricket Academy. Please share program details and timings.")}
+              data-wa-label="academy-join"
               target="_blank"
               rel="noreferrer"
               className="btn-primary !from-arena-lime !to-arena-mint"

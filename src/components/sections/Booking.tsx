@@ -236,6 +236,7 @@ export default function Booking() {
                 </div>
                 <a
                   href={waLink}
+                  data-wa-label="booking-confirm"
                   target="_blank"
                   rel="noreferrer"
                   className="btn-primary mt-6 w-full !py-4"

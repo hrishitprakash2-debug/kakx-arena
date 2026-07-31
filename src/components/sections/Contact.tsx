@@ -104,6 +104,7 @@ export default function Contact() {
             >
               <a
                 href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hi KAKX Arena! I have a question.")}`}
+                data-wa-label="contact-chat"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-primary w-full"

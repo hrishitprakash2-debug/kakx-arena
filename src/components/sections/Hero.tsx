@@ -104,6 +104,7 @@ export default function Hero() {
           >
             <a
               href={whatsappLink("Hi KAKX Arena! I want to book a slot.")}
+              data-wa-label="hero-book"
               target="_blank"
               rel="noreferrer"
               className="btn-primary"

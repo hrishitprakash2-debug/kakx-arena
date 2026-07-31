@@ -62,6 +62,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <a
               href={whatsappLink("Hi KAKX Arena! I want to book a slot.")}
+              data-wa-label="header-book"
               target="_blank"
               rel="noreferrer"
               className="btn-primary hidden !px-5 !py-2.5 !text-xs sm:inline-flex"

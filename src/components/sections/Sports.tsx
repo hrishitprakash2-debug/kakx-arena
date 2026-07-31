@@ -122,6 +122,7 @@ export default function Sports() {
                     href={whatsappLink(
                       `Hi KAKX Arena! I want to book ${sport.name} (₹${sport.price}${sport.unit}). Please share available slots.`
                     )}
+                    data-wa-label={`sport-${sport.id}`}
                     target="_blank"
                     rel="noreferrer"
                     className={`mt-6 inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 group-hover:border-arena-green group-hover:bg-arena-green group-hover:text-black ${a.text}`}
