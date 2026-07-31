@@ -107,7 +107,7 @@ export default function CricketBallCanvas() {
   // mount the WebGL context only while near the viewport — saves battery/GPU off-screen
   const inView = useInView(ref, { margin: "300px" });
   // phones render at device resolution (no supersampling) — big GPU saving
-  const dpr =
+  const dpr: [number, number] =
     typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches
       ? [1, 1]
       : [1, 1.5];
