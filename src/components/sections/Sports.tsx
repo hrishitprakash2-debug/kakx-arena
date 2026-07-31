@@ -4,14 +4,8 @@ import { useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight, Zap } from "lucide-react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import { sports, whatsappLink } from "@/data/site";
 import type { Sport } from "@/data/site";
-
-const Racket = dynamic(() => import("@/components/three/Racket"), {
-  ssr: false,
-  loading: () => null,
-});
 
 const accentMap: Record<string, { glow: string; text: string; border: string }> = {
   orange: { glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(163,230,53,0.45)]", text: "text-arena-green", border: "hover:border-arena-green/60" },
@@ -135,10 +129,6 @@ export default function Sports() {
   return (
     <section id="sports" className="section-pad relative overflow-hidden">
       <div className="glow-blob right-[-10%] top-[10%] h-[400px] w-[400px] bg-arena-green/10" />
-      {/* 3D racket accent — wide screens only, never over content */}
-      <div className="pointer-events-none absolute bottom-10 left-6 hidden h-44 w-40 opacity-80 2xl:block">
-        <Racket />
-      </div>
       <div className="container-x relative">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 sm:mb-16 lg:flex-row lg:items-end">
           <div>

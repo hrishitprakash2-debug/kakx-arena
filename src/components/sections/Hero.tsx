@@ -165,26 +165,15 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D column */}
+        {/* 3D column — same ball on every screen */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease: "easeOut" as const }}
-          className="relative z-0 h-[320px] sm:h-[420px] lg:h-[560px]"
+          className="relative z-0 h-[300px] sm:h-[420px] lg:h-[560px]"
         >
           <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[100px]" />
-          {/* full WebGL ball — tablets & desktop */}
-          <div className="hidden h-full w-full sm:block">
-            <CricketBall />
-          </div>
-          {/* lightweight CSS ball — phones (no WebGL) */}
-          <div className="absolute inset-0 flex items-center justify-center sm:hidden">
-            <div className="relative h-52 w-52 animate-float">
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_32%_28%,#d9f99d_0%,#9BE33D_45%,#3f6212_100%)] shadow-[0_0_70px_rgba(163,230,53,0.35)]" />
-              <div className="absolute left-1/2 top-1/2 h-[36%] w-[112%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-white/60" />
-              <div className="absolute left-1/2 top-1/2 h-[112%] w-[36%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border-2 border-white/60" />
-            </div>
-          </div>
+          <CricketBall />
         </motion.div>
       </div>
 
