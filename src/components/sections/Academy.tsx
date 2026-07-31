@@ -25,10 +25,6 @@ export default function Academy() {
       <div className="glow-blob bottom-[-25%] right-[-10%] h-[380px] w-[380px] bg-arena-green/10" />
 
       <div className="container-x relative grid items-center gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:gap-16">
-        {/* floating 3D stumps — desktop accent */}
-        <div className="pointer-events-none absolute right-4 top-8 hidden h-[340px] w-[300px] opacity-90 lg:block">
-          <Stumps />
-        </div>
         {/* image side */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -47,6 +43,10 @@ export default function Academy() {
               className="h-[320px] w-full object-cover sm:h-[420px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            {/* 3D stumps — anchored inside the image, never over text */}
+            <div className="pointer-events-none absolute right-2 top-2 h-44 w-40 opacity-95 lg:h-52 lg:w-48">
+              <Stumps />
+            </div>
             <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-xl border border-white/10 bg-black/60 px-5 py-4 backdrop-blur-md">
               <div>
                 <p className="font-display text-2xl uppercase tracking-wide text-arena-lime">KAKX Academy</p>

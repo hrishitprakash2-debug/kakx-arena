@@ -3,7 +3,13 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CalendarDays, Check, Clock, Phone } from "lucide-react";
+import dynamic from "next/dynamic";
 import { sports, timeSlots, whatsappLink } from "@/data/site";
+
+const Clock3D = dynamic(() => import("@/components/three/Clock"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const STEPS = ["Sport", "Date & Time", "Details"];
 
@@ -51,6 +57,10 @@ export default function Booking() {
   return (
     <section id="booking" className="section-pad relative overflow-hidden">
       <div className="glow-blob left-1/2 top-[-10%] h-[420px] w-[620px] -translate-x-1/2 bg-arena-green/12" />
+      {/* 3D clock accent — wide screens only */}
+      <div className="pointer-events-none absolute right-8 top-1/3 hidden h-44 w-40 opacity-80 2xl:block">
+        <Clock3D />
+      </div>
       <div className="container-x relative max-w-4xl">
         <div className="mb-10 text-center">
           <motion.span
