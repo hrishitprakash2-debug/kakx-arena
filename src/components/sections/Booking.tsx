@@ -1,162 +1,281 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { sports, timeSlots } from "@/data/site";
-import { Calendar, Clock, Users, Check, ChevronRight } from "lucide-react";
 
-type Step = 1 | 2 | 3 | 4;
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, CalendarDays, Check, Clock, Phone } from "lucide-react";
+import { sports, timeSlots, whatsappLink } from "@/data/site";
+
+const STEPS = ["Sport", "Date & Time", "Details"];
+
+function nextDays(n: number) {
+  const out: { label: string; full: string; iso: string }[] = [];
+  const now = new Date();
+  for (let i = 0; i < n; i++) {
+    const d = new Date(now);
+    d.setDate(now.getDate() + i);
+    out.push({
+      label:
+        i === 0
+          ? "Today"
+          : i === 1
+            ? "Tomorrow"
+            : d.toLocaleDateString("en-IN", { weekday: "short" }),
+      full: d.toLocaleDateString("en-IN", { day: "numeric", month: "short" }),
+      iso: d.toISOString().slice(0, 10),
+    });
+  }
+  return out;
+}
 
 export default function Booking() {
-  const [step, setStep] = useState<Step>(1);
-  const [selectedSport, setSelectedSport] = useState<string | null>(null);
-  const [selectedDate, setSelectedDate] = useState<string>("");
-  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
+  const [step, setStep] = useState(0);
+  const [sport, setSport] = useState<string | null>(null);
+  const [date, setDate] = useState<string | null>(null);
+  const [slot, setSlot] = useState<string | null>(null);
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
-  const sport = sports.find((s) => s.id === selectedSport);
+  const days = useMemo(() => nextDays(7), []);
+  const selectedSport = sports.find((s) => s.id === sport);
 
-  const today = new Date();
-  const dates = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(today);
-    d.setDate(d.getDate() + i);
-    return d.toISOString().split("T")[0];
-  });
+  const message = `Hi KAKX Arena! I want to book a slot.%0A%0A🏟 Sport: ${selectedSport?.name ?? ""}%0A📅 Date: ${date ?? ""}%0A⏰ Time: ${slot ?? ""}%0A👤 Name: ${name || "—"}`;
+  const waLink = `https://wa.me/918375060708?text=${message}`;
 
-  const handleSubmit = () => {
-    if (name && phone && selectedSport && selectedDate && selectedSlot) {
-      setSubmitted(true);
-    }
-  };
+  const canNext =
+    (step === 0 && !!sport) ||
+    (step === 1 && !!date && !!slot) ||
+    step === 2;
 
-  const reset = () => {
-    setStep(1);
-    setSelectedSport(null);
-    setSelectedDate("");
-    setSelectedSlot(null);
-    setName("");
-    setPhone("");
-    setSubmitted(false);
-  };
+  const next = () => setStep((s) => Math.min(s + 1, 2));
+  const back = () => setStep((s) => Math.max(s - 1, 0));
 
   return (
-    <section id="booking" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-stone-950">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-12">
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-green-400 text-xs tracking-[0.3em] uppercase mb-3">
-            Book Now
-          </motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl sm:text-4xl md:text-5xl font-bold">
-            Reserve Your <span className="text-green-400">Slot</span>
+    <section id="booking" className="section-pad relative overflow-hidden">
+      <div className="glow-blob left-1/2 top-[-10%] h-[420px] w-[620px] -translate-x-1/2 bg-arena-orange/12" />
+      <div className="container-x relative max-w-4xl">
+        <div className="mb-10 text-center">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="eyebrow"
+          >
+            Book in 30 Seconds
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
+          >
+            Reserve Your <span className="text-gradient-orange">Slot</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+            className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-400"
+          >
+            Pick your sport, date and time — your booking goes straight to our
+            WhatsApp. We confirm within minutes.
+          </motion.p>
         </div>
 
-        {/* Progress Bar */}
-        <div className="flex items-center justify-center gap-2 mb-10">
-          {[1, 2, 3, 4].map((s) => (
-            <div key={s} className="flex items-center gap-2">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${step >= s ? "bg-green-600 text-white" : "bg-white/10 text-white/30"}`}>
-                {step > s ? <Check className="w-4 h-4" /> : s}
+        {/* progress steps */}
+        <div className="mb-8 flex items-center justify-center gap-2 sm:gap-4">
+          {STEPS.map((s, i) => (
+            <div key={s} className="flex items-center gap-2 sm:gap-4">
+              <div className="flex items-center gap-2">
+                <span
+                  className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold transition-all duration-300 ${
+                    i < step
+                      ? "bg-arena-orange text-black"
+                      : i === step
+                        ? "border-2 border-arena-orange text-arena-orange"
+                        : "border border-white/15 text-zinc-500"
+                  }`}
+                >
+                  {i < step ? <Check className="h-3.5 w-3.5" /> : i + 1}
+                </span>
+                <span
+                  className={`hidden text-xs font-semibold uppercase tracking-wider sm:block ${
+                    i <= step ? "text-white" : "text-zinc-500"
+                  }`}
+                >
+                  {s}
+                </span>
               </div>
-              {s < 4 && <div className={`w-8 sm:w-16 h-0.5 ${step > s ? "bg-green-600" : "bg-white/10"}`} />}
+              {i < STEPS.length - 1 && (
+                <span className={`h-px w-8 sm:w-14 ${i < step ? "bg-arena-orange" : "bg-white/10"}`} />
+              )}
             </div>
           ))}
         </div>
 
-        <AnimatePresence mode="wait">
-          {submitted ? (
-            <motion.div key="success" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12 bg-white/[0.03] border border-green-500/20 rounded-2xl">
-              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Check className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2">Booking Confirmed!</h3>
-              <p className="text-white/50 mb-6">
-                {sport?.name} • {new Date(selectedDate).toLocaleDateString("en-IN", { weekday: "short", month: "short", day: "numeric" })} • {selectedSlot}
-              </p>
-              <p className="text-white/30 text-sm mb-6">Confirmation sent to {phone}</p>
-              <button onClick={reset} className="px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-500 transition-colors">
-                Book Another Slot
-              </button>
-            </motion.div>
-          ) : (
-            <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }}>
-              {/* Step 1: Sport */}
-              {step === 1 && (
-                <div className="space-y-3">
-                  <p className="text-white/50 text-sm mb-4">Choose your sport:</p>
-                  {sports.map((s) => (
-                    <button key={s.id} onClick={() => { setSelectedSport(s.id); setStep(2); }} className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-all ${selectedSport === s.id ? "border-green-500 bg-green-500/10" : "border-white/10 bg-white/[0.03] hover:border-white/20"}`}>
-                      <span className="text-2xl">{s.icon}</span>
-                      <div className="text-left flex-1">
-                        <p className="font-semibold text-white">{s.name}</p>
-                        <p className="text-white/40 text-xs">{s.surface}</p>
-                      </div>
-                      <span className="text-green-400 font-bold">₹{s.price}</span>
-                      <ChevronRight className="w-5 h-5 text-white/30" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: "easeOut" as const }}
+          className="relative overflow-hidden rounded-2xl border border-white/10 bg-arena-card p-6 sm:p-9"
+        >
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-arena-orange via-arena-amber to-arena-orange" />
+
+          <AnimatePresence mode="wait">
+            {step === 0 && (
+              <motion.div
+                key="s0"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-2 gap-3 sm:grid-cols-4"
+              >
+                {sports.map((s) => (
+                  <button
+                    key={s.id}
+                    onClick={() => {
+                      setSport(s.id);
+                      next();
+                    }}
+                    className={`flex flex-col items-center gap-2 rounded-xl border p-4 text-center transition-all duration-300 hover:-translate-y-1 ${
+                      sport === s.id
+                        ? "border-arena-orange bg-arena-orange/15 shadow-[0_0_30px_rgba(255,107,0,0.25)]"
+                        : "border-white/10 bg-white/[0.03] hover:border-white/25"
+                    }`}
+                  >
+                    <span className="text-3xl">{s.emoji}</span>
+                    <span className="text-xs font-bold text-white">{s.name}</span>
+                    <span className="text-[10px] text-zinc-500">
+                      ₹{s.price}
+                      {s.unit}
+                    </span>
+                  </button>
+                ))}
+              </motion.div>
+            )}
+
+            {step === 1 && (
+              <motion.div
+                key="s1"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.3 }}
+              >
+                <p className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                  <CalendarDays className="h-4 w-4 text-arena-orange" /> Pick a date
+                </p>
+                <div className="flex gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                  {days.map((d) => (
+                    <button
+                      key={d.iso}
+                      onClick={() => setDate(d.full)}
+                      className={`flex min-w-[74px] shrink-0 flex-col items-center rounded-xl border px-3 py-3 transition-all duration-300 ${
+                        date === d.full
+                          ? "border-arena-orange bg-arena-orange/15 text-white"
+                          : "border-white/10 bg-white/[0.03] text-zinc-300 hover:border-white/25"
+                      }`}
+                    >
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+                        {d.label}
+                      </span>
+                      <span className="mt-1 text-sm font-bold">{d.full}</span>
                     </button>
                   ))}
                 </div>
-              )}
 
-              {/* Step 2: Date */}
-              {step === 2 && (
-                <div>
-                  <p className="text-white/50 text-sm mb-4">Select a date:</p>
-                  <div className="grid grid-cols-7 gap-2">
-                    {dates.map((d) => {
-                      const date = new Date(d);
-                      const isToday = d === today.toISOString().split("T")[0];
-                      return (
-                        <button key={d} onClick={() => { setSelectedDate(d); setStep(3); }} className={`flex flex-col items-center p-3 rounded-xl border transition-all ${selectedDate === d ? "border-green-500 bg-green-500/10" : "border-white/10 bg-white/[0.03] hover:border-white/20"}`}>
-                          <span className="text-[10px] text-white/40 uppercase">{date.toLocaleDateString("en-IN", { weekday: "short" })}</span>
-                          <span className={`text-lg font-bold ${isToday ? "text-green-400" : "text-white"}`}>{date.getDate()}</span>
-                          <span className="text-[10px] text-white/40">{date.toLocaleDateString("en-IN", { month: "short" })}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
+                <p className="mb-3 mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                  <Clock className="h-4 w-4 text-arena-orange" /> Pick a time
+                </p>
+                <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
+                  {timeSlots.map((t) => (
+                    <button
+                      key={t}
+                      onClick={() => setSlot(t)}
+                      className={`rounded-lg border py-2.5 text-xs font-semibold transition-all duration-200 ${
+                        slot === t
+                          ? "border-arena-orange bg-arena-orange text-black"
+                          : "border-white/10 bg-white/[0.03] text-zinc-300 hover:border-white/30"
+                      }`}
+                    >
+                      {t}
+                    </button>
+                  ))}
                 </div>
-              )}
+              </motion.div>
+            )}
 
-              {/* Step 3: Time Slot */}
-              {step === 3 && (
-                <div>
-                  <p className="text-white/50 text-sm mb-4">Pick a time slot:</p>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-                    {timeSlots.map((slot) => (
-                      <button key={slot} onClick={() => { setSelectedSlot(slot); setStep(4); }} className={`p-3 rounded-xl border text-sm font-medium transition-all ${selectedSlot === slot ? "border-green-500 bg-green-500/10 text-green-400" : "border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20"}`}>
-                        {slot}
-                      </button>
-                    ))}
-                  </div>
+            {step === 2 && (
+              <motion.div
+                key="s2"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -30 }}
+                transition={{ duration: 0.3 }}
+              >
+                <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                  Your name <span className="text-zinc-600">(optional)</span>
+                </label>
+                <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g. Rohit"
+                  className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-sm text-white placeholder:text-zinc-600 focus:border-arena-orange focus:outline-none"
+                />
+                <div className="mt-5 rounded-xl border border-arena-orange/20 bg-arena-orange/[0.07] p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-arena-orange">
+                    Booking Summary
+                  </p>
+                  <p className="mt-2 text-sm text-zinc-300">
+                    {selectedSport?.emoji} {selectedSport?.name} · ₹{selectedSport?.price}
+                    {selectedSport?.unit} — {date} at {slot}
+                  </p>
                 </div>
-              )}
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary mt-6 w-full !py-4"
+                >
+                  Confirm on WhatsApp <ArrowRight className="h-4 w-4" />
+                </a>
+                <p className="mt-3 text-center text-xs text-zinc-500">
+                  Opens WhatsApp with your booking details pre-filled — or call{" "}
+                  <a href="tel:+918375060708" className="text-arena-orange hover:underline">
+                    083750 60708
+                  </a>
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-              {/* Step 4: Details */}
-              {step === 4 && (
-                <div className="space-y-4">
-                  <p className="text-white/50 text-sm mb-4">Your details:</p>
-                  <div className="bg-white/[0.03] border border-white/10 rounded-xl p-4 mb-6">
-                    <div className="flex items-center gap-3 text-sm">
-                      <span className="text-xl">{sport?.icon}</span>
-                      <div>
-                        <p className="font-semibold text-white">{sport?.name}</p>
-                        <p className="text-white/40">{new Date(selectedDate).toLocaleDateString("en-IN", { weekday: "short", month: "short", day: "numeric" })} • {selectedSlot}</p>
-                      </div>
-                      <span className="ml-auto text-green-400 font-bold">₹{sport?.price}</span>
-                    </div>
-                  </div>
-                  <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-green-500 transition-colors" />
-                  <input type="tel" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:border-green-500 transition-colors" />
-                  <button onClick={handleSubmit} disabled={!name || !phone} className="w-full py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-500 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
-                    Confirm Booking
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
+          <div className="mt-7 flex items-center justify-between border-t border-white/5 pt-5">
+            <button
+              onClick={back}
+              disabled={step === 0}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-400 transition-colors hover:text-white disabled:pointer-events-none disabled:opacity-30"
+            >
+              <ArrowLeft className="h-4 w-4" /> Back
+            </button>
+            {step < 2 && (
+              <button
+                onClick={next}
+                disabled={!canNext}
+                className="btn-ghost !py-2.5 !text-xs disabled:pointer-events-none disabled:opacity-30"
+              >
+                Continue <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+            )}
+            {step === 2 && (
+              <a href={`tel:+918375060708`} className="btn-ghost !py-2.5 !text-xs">
+                <Phone className="h-3.5 w-3.5" /> Call Instead
+              </a>
+            )}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

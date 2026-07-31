@@ -1,26 +1,48 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/data/site";
+
+const bebas = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bebas",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
-  title: "KAKX ARENA | Play. Compete. Dominate. | Wave City, Ghaziabad",
-  description: "Premium sports facility in Wave City, Ghaziabad. Book Badminton, Football, Cricket, Pickleball courts. Open 24 hours. 4.8★ rated.",
-  keywords: ["sports arena ghaziabad", "kakx arena", "wave city sports", "badminton court ghaziabad", "football turf ghaziabad", "box cricket ghaziabad"],
+  title: "KAKX Arena — Box Cricket, Cricket Academy, Badminton & Pickleball | Ghaziabad",
+  description: siteConfig.description,
+  keywords: [
+    "KAKX Arena", "sports arena Ghaziabad", "box cricket Wave City", "cricket academy Ghaziabad",
+    "badminton court Ghaziabad", "pickleball Ghaziabad", "book sports slot",
+  ],
   openGraph: {
-    title: "KAKX ARENA | Premium Sports Facility",
-    description: "Book Badminton, Football, Cricket, Pickleball in Wave City, Ghaziabad.",
+    title: "KAKX Arena — Fuel Your Play",
+    description: siteConfig.description,
     type: "website",
+    images: ["/images/hero.jpg"],
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  themeColor: "#0B0B0D",
+  width: "device-width",
+  initialScale: 1,
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-sans bg-black text-white antialiased">{children}</body>
+    <html lang="en" className={`${bebas.variable} ${inter.variable}`}>
+      <body className="bg-arena-bg text-white antialiased">
+        {children}
+      </body>
     </html>
   );
 }

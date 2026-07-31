@@ -1,46 +1,150 @@
 "use client";
+
 import { motion } from "framer-motion";
+import { Clock, Globe, MapPin, Phone } from "lucide-react";
+import { InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig } from "@/data/site";
-import { MapPin, Phone, Clock, ExternalLink, MessageCircle } from "lucide-react";
+
+const cards = [
+  {
+    icon: MapPin,
+    title: "Find Us",
+    lines: [siteConfig.address],
+    href: siteConfig.mapsLink,
+    cta: "Get Directions",
+  },
+  {
+    icon: Phone,
+    title: "Call Us",
+    lines: [siteConfig.phoneDisplay, "Bookings & enquiries"],
+    href: `tel:${siteConfig.phone}`,
+    cta: "Call Now",
+  },
+  {
+    icon: Clock,
+    title: "Open Hours",
+    lines: ["Open 24 Hours", "7 days a week"],
+  },
+  {
+    icon: Globe,
+    title: "Online",
+    lines: [`@kakx.arena`, siteConfig.website],
+    href: siteConfig.instagram,
+    cta: "Follow Us",
+  },
+];
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-black">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-green-400 text-xs tracking-[0.3em] uppercase mb-3">
-            Find Us
-          </motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl sm:text-4xl md:text-5xl font-bold">
-            Visit <span className="text-green-400">KAKX Arena</span>
+    <section id="contact" className="section-pad relative overflow-hidden bg-arena-panel">
+      <div className="absolute inset-0 bg-grid opacity-40" />
+      <div className="glow-blob right-[-10%] top-[-10%] h-[400px] w-[400px] bg-arena-orange/12" />
+      <div className="container-x relative">
+        <div className="mb-12 text-center">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="eyebrow"
+          >
+            Get In Touch
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
+          >
+            Come <span className="text-gradient-orange">Play</span>
           </motion.h2>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2 space-y-4">
-            <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
-              <div className="flex items-center gap-3 mb-3"><MapPin className="w-5 h-5 text-green-400" /><h3 className="text-white font-semibold">Address</h3></div>
-              <p className="text-white/50 text-sm leading-relaxed">{siteConfig.address}</p>
-              <a href={siteConfig.googleMaps} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-green-400 text-sm mt-3 hover:text-green-300 transition-colors">
-                Open in Maps <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-            <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
-              <div className="flex items-center gap-3 mb-3"><Clock className="w-5 h-5 text-green-400" /><h3 className="text-white font-semibold">Hours</h3></div>
-              <p className="text-green-400 font-semibold text-sm">{siteConfig.openHours}</p>
-              <div className="flex items-center gap-2 mt-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /><span className="text-green-400/70 text-xs">Open now</span></div>
-            </div>
-            <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
-              <div className="flex items-center gap-3 mb-3"><Phone className="w-5 h-5 text-green-400" /><h3 className="text-white font-semibold">Contact</h3></div>
-              <div className="space-y-2">
-                <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-3 text-white/50 hover:text-green-400 transition-colors text-sm"><Phone className="w-4 h-4" /> {siteConfig.phone}</a>
-                <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/50 hover:text-green-400 transition-colors text-sm"><MessageCircle className="w-4 h-4" /> WhatsApp</a>
-              </div>
-            </div>
-          </motion.div>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          {/* info cards */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {cards.map((c, i) => (
+              <motion.div
+                key={c.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: 0.08 * i, ease: "easeOut" as const }}
+                className="flex flex-col rounded-2xl border border-white/10 bg-arena-card p-6 transition-colors duration-300 hover:border-arena-orange/40"
+              >
+                <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-arena-orange/20 to-arena-amber/10 text-arena-orange">
+                  <c.icon className="h-5 w-5" />
+                </span>
+                <h3 className="font-display text-2xl uppercase tracking-wide text-white">{c.title}</h3>
+                {c.lines.map((l) => (
+                  <p key={l} className="mt-1 text-sm leading-relaxed text-zinc-400">
+                    {l}
+                  </p>
+                ))}
+                {c.href && (
+                  <a
+                    href={c.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-auto pt-4 text-xs font-bold uppercase tracking-wider text-arena-orange hover:underline"
+                  >
+                    {c.cta} →
+                  </a>
+                )}
+              </motion.div>
+            ))}
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-3 rounded-2xl overflow-hidden border border-white/[0.06] min-h-[400px]">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.68!2d77.4538!3d28.6692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf5a43173357b%3A0x2c42e82de01011e0!2sWave+City%2C+Ghaziabad!5e0!3m2!1sen!2sin" width="100%" height="100%" style={{ border: 0, minHeight: "400px" }} allowFullScreen loading="lazy" title="KAKX Arena Location" className="grayscale hover:grayscale-0 transition-all duration-500" />
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.4 }}
+              className="flex items-center justify-center gap-4 rounded-2xl border border-arena-orange/30 bg-gradient-to-r from-arena-orange/15 to-arena-amber/10 p-6 sm:col-span-2"
+            >
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent("Hi KAKX Arena! I have a question.")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary w-full"
+              >
+                <WhatsAppIcon className="h-5 w-5" /> Chat on WhatsApp
+              </a>
+              <a
+                href={siteConfig.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-ghost w-full"
+              >
+                <InstagramIcon className="h-5 w-5" /> Instagram
+              </a>
+            </motion.div>
+          </div>
+
+          {/* map */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" as const }}
+            className="relative min-h-[340px] overflow-hidden rounded-2xl border border-white/10"
+          >
+            <iframe
+              src={siteConfig.mapsEmbed}
+              title="KAKX Arena location map"
+              className="map-frame absolute inset-0 h-full w-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+            <a
+              href={siteConfig.mapsLink}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute bottom-4 left-4 rounded-full bg-black/80 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition-colors hover:text-arena-orange"
+            >
+              📍 Open in Google Maps
+            </a>
           </motion.div>
         </div>
       </div>

@@ -1,52 +1,159 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { siteConfig } from "@/data/site";
-import { Star, Clock, MapPin, ChevronDown } from "lucide-react";
+import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
+import dynamic from "next/dynamic";
+import { marqueeItems, siteConfig, whatsappLink } from "@/data/site";
+
+const CricketBall = dynamic(() => import("@/components/three/CricketBall"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="h-40 w-40 animate-spinSlow rounded-full border-2 border-dashed border-arena-orange/40" />
+    </div>
+  ),
+});
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 34 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: 0.12 * i, ease: "easeOut" as const },
+  }),
+};
 
 export default function Hero() {
-  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&h=1080&fit=crop&q=80" alt="Sports facility" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
+    <section id="top" className="relative overflow-hidden pt-16 sm:pt-20">
+      {/* background layers */}
+      <div className="absolute inset-0 bg-grid opacity-60" />
+      <div className="absolute inset-0 bg-noise" />
+      <div
+        className="absolute inset-0 opacity-[0.14]"
+        style={{
+          backgroundImage: "url(/images/hero.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          maskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
+        }}
+      />
+      <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-orange/25" />
+      <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-gold/15" />
+
+      <div className="container-x relative grid min-h-[calc(100vh-5rem)] items-center gap-8 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-4">
+        {/* text column */}
+        <div className="relative z-10">
+          <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible" className="mb-6 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur">
+              <Star className="h-3.5 w-3.5 fill-arena-amber text-arena-amber" />
+              {siteConfig.rating} · {siteConfig.reviews} Google Reviews
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-arena-orange/40 bg-arena-orange/10 px-4 py-1.5 text-xs font-semibold text-arena-orange">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-arena-orange opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-arena-orange" />
+              </span>
+              Open 24 Hours
+            </span>
+          </motion.div>
+
+          <motion.h1
+            custom={1}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="display-title text-[19vw] leading-[0.9] sm:text-8xl md:text-9xl"
+          >
+            KAKX
+            <span className="block text-gradient-orange">ARENA</span>
+          </motion.h1>
+
+          <motion.p
+            custom={2}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="font-display mt-3 text-2xl uppercase tracking-[0.25em] text-zinc-300 sm:text-3xl"
+          >
+            Fuel Your Play ⚡
+          </motion.p>
+
+          <motion.p
+            custom={3}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg"
+          >
+            Wave City&apos;s premium sports destination —{" "}
+            <span className="font-semibold text-white">Box Cricket</span>, a pro{" "}
+            <span className="font-semibold text-white">Cricket Academy</span>,{" "}
+            <span className="font-semibold text-white">Badminton</span> &{" "}
+            <span className="font-semibold text-white">Pickleball</span>. Floodlit nights,
+            pro coaching, open 24 hours.
+          </motion.p>
+
+          <motion.div
+            custom={4}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-9 flex flex-col gap-4 sm:flex-row"
+          >
+            <a
+              href={whatsappLink("Hi KAKX Arena! I want to book a slot.")}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary"
+            >
+              Book Your Slot <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href="#sports" className="btn-ghost">
+              Explore Sports
+            </a>
+          </motion.div>
+
+          <motion.div
+            custom={5}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-9 flex flex-col gap-3 text-sm text-zinc-400 sm:flex-row sm:items-center sm:gap-8"
+          >
+            <span className="inline-flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-arena-orange" /> {siteConfig.address}
+            </span>
+            <a href={`tel:${siteConfig.phone}`} className="inline-flex items-center gap-2 transition-colors hover:text-arena-orange">
+              <Phone className="h-4 w-4 text-arena-orange" /> {siteConfig.phoneDisplay}
+            </a>
+          </motion.div>
+        </div>
+
+        {/* 3D column */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: "easeOut" as const }}
+          className="relative z-0 h-[320px] sm:h-[420px] lg:h-[560px]"
+        >
+          <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-orange/20 blur-[100px]" />
+          <CricketBall />
+        </motion.div>
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-600/20 border border-green-500/30 text-green-400 text-sm mb-6">
-          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          {siteConfig.openHours}
-        </motion.div>
-
-        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight mb-4">
-          <span className="text-white">KAKX</span>{" "}
-          <span className="text-green-400">ARENA</span>
-        </motion.h1>
-
-        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="text-xl sm:text-2xl md:text-3xl font-light text-white/80 mb-8">
-          {siteConfig.tagline}
-        </motion.p>
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-10 text-sm text-white/60">
-          <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /> {siteConfig.rating} ({siteConfig.reviews} reviews)</span>
-          <span className="flex items-center gap-1.5"><MapPin className="w-4 h-4" /> Wave City, Ghaziabad</span>
-          <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" /> {siteConfig.openHours}</span>
-        </motion.div>
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button onClick={() => scrollTo("booking")} className="w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-full text-base transition-all hover:shadow-lg hover:shadow-green-600/25">
-            Book a Slot
-          </button>
-          <button onClick={() => scrollTo("sports")} className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-semibold rounded-full text-base hover:bg-white/10 transition-colors">
-            View Sports
-          </button>
-        </motion.div>
+      {/* marquee strip */}
+      <div className="relative z-10 -rotate-1 border-y-4 border-black bg-gradient-to-r from-arena-orange via-arena-amber to-arena-orange py-3.5 shadow-[0_0_60px_rgba(255,107,0,0.35)]">
+        <div className="marquee-track flex w-max animate-marquee items-center gap-8 whitespace-nowrap">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span key={i} className="flex items-center gap-8 font-display text-lg uppercase tracking-[0.2em] text-black">
+              {item}
+              <span className="text-black/50">★</span>
+            </span>
+          ))}
+        </div>
       </div>
-
-      <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <ChevronDown className="w-6 h-6 text-white/40" />
-      </motion.div>
     </section>
   );
 }

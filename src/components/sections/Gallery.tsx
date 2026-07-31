@@ -1,30 +1,114 @@
 "use client";
-import { motion } from "framer-motion";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
+import Image from "next/image";
 import { gallery } from "@/data/site";
 
 export default function Gallery() {
+  const [active, setActive] = useState<number | null>(null);
+
   return (
-    <section id="gallery" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-stone-950">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-green-400 text-xs tracking-[0.3em] uppercase mb-3">
-            Gallery
-          </motion.p>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl sm:text-4xl md:text-5xl font-bold">
-            See Us In <span className="text-green-400">Action</span>
+    <section id="gallery" className="section-pad relative overflow-hidden bg-arena-panel">
+      <div className="absolute inset-0 bg-noise" />
+      <div className="glow-blob right-[-8%] top-[-15%] h-[380px] w-[380px] bg-arena-orange/10" />
+      <div className="container-x relative">
+        <div className="mb-12 text-center">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="eyebrow"
+          >
+            The Arena
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="display-title mt-4 text-5xl sm:text-6xl lg:text-7xl"
+          >
+            Seen In <span className="text-gradient-orange">Action</span>
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-          {gallery.map((img, i) => (
-            <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="relative aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer">
-              <img src={img.src} alt={img.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <p className="absolute bottom-3 left-3 right-3 text-white text-sm font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">{img.alt}</p>
-            </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+          className="grid auto-rows-[190px] grid-cols-2 gap-3 sm:auto-rows-[220px] md:grid-cols-4"
+        >
+          {gallery.map((g, i) => (
+            <motion.button
+              key={i}
+              onClick={() => setActive(i)}
+              variants={{
+                hidden: { opacity: 0, scale: 0.92 },
+                visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
+              }}
+              className={`group relative overflow-hidden rounded-xl border border-white/10 text-left ${
+                i === 0 ? "col-span-2 row-span-2 md:col-span-2 md:row-span-2" : ""
+              }`}
+            >
+              <Image
+                src={g.src}
+                alt={g.alt}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100 sm:opacity-100" />
+              <span className="absolute left-3 top-3 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-arena-orange backdrop-blur">
+                {g.tag}
+              </span>
+              <span className="absolute bottom-3 left-3 right-3 text-xs font-medium text-white opacity-100 sm:translate-y-2 sm:opacity-0 sm:transition-all sm:duration-500 sm:group-hover:translate-y-0 sm:group-hover:opacity-100">
+                {g.alt}
+              </span>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </div>
+
+      {/* lightbox */}
+      <AnimatePresence>
+        {active !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActive(null)}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          >
+            <button
+              className="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white"
+              aria-label="Close"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className="relative h-[75vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-white/10"
+            >
+              <Image
+                src={gallery[active].src}
+                alt={gallery[active].alt}
+                fill
+                className="object-contain"
+              />
+              <span className="absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-black/70 px-4 py-2 text-xs font-medium text-zinc-200 backdrop-blur">
+                {gallery[active].alt}
+              </span>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -1,59 +1,135 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { siteConfig } from "@/data/site";
-import { Menu, X, Phone } from "lucide-react";
 
-const navLinks = [
-  { id: "sports", label: "Sports" },
-  { id: "booking", label: "Book Now" },
-  { id: "gallery", label: "Gallery" },
-  { id: "contact", label: "Contact" },
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { whatsappLink } from "@/data/site";
+
+const links = [
+  { href: "#sports", label: "Sports" },
+  { href: "#academy", label: "Academy" },
+  { href: "#booking", label: "Booking" },
+  { href: "#gallery", label: "Gallery" },
+  { href: "#reviews", label: "Reviews" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setOpen(false);
-  };
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "bg-black/95 backdrop-blur-xl border-b border-white/10" : "bg-transparent"}`}>
-      <nav className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 sm:px-6">
-        <a href="#" className="font-bold text-xl tracking-tight text-green-400">{siteConfig.name}</a>
-        <div className="hidden md:flex items-center gap-6">
-          {navLinks.map((l) => (
-            <button key={l.id} onClick={() => scrollTo(l.id)} className="text-sm text-white/70 hover:text-green-400 transition-colors">{l.label}</button>
-          ))}
-          <a href={`tel:${siteConfig.phone}`} className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full hover:bg-green-500 transition-colors">
-            <Phone className="w-4 h-4" /> Call Now
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "border-b border-white/10 bg-black/70 backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="container-x flex h-16 items-center justify-between sm:h-20">
+          <a href="#top" className="flex items-baseline gap-1 font-display text-2xl tracking-wider sm:text-3xl">
+            <span className="text-gradient-orange">KAKX</span>
+            <span className="text-white">ARENA</span>
           </a>
+
+          <nav className="hidden items-center gap-8 lg:flex">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm font-medium text-zinc-300 transition-colors hover:text-arena-orange"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <a
+              href={whatsappLink("Hi KAKX Arena! I want to book a slot.")}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary hidden !px-5 !py-2.5 !text-xs sm:inline-flex"
+            >
+              Book Now
+            </a>
+            <button
+              onClick={() => setOpen(true)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white lg:hidden"
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
         </div>
-        <button className="md:hidden text-white/80" onClick={() => setOpen(!open)}>{open ? <X size={24} /> : <Menu size={24} />}</button>
-      </nav>
+      </header>
+
       <AnimatePresence>
         {open && (
-          <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="md:hidden overflow-hidden bg-black/95 backdrop-blur-xl">
-            <div className="flex flex-col px-4 py-4 gap-3">
-              {navLinks.map((l) => (
-                <button key={l.id} onClick={() => scrollTo(l.id)} className="text-left text-white/70 hover:text-green-400 py-2">{l.label}</button>
-              ))}
-              <a href={`tel:${siteConfig.phone}`} className="flex items-center justify-center gap-2 px-4 py-3 bg-green-600 text-white font-semibold rounded-full">
-                <Phone className="w-4 h-4" /> Call Now
-              </a>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[60] flex flex-col bg-black/95 backdrop-blur-2xl lg:hidden"
+          >
+            <div className="container-x flex h-16 items-center justify-between">
+              <span className="font-display text-2xl tracking-wider">
+                <span className="text-gradient-orange">KAKX</span>
+                <span className="text-white">ARENA</span>
+              </span>
+              <button
+                onClick={() => setOpen(false)}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white"
+                aria-label="Close menu"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
+            <nav className="container-x flex flex-1 flex-col justify-center gap-2">
+              {links.map((l, i) => (
+                <motion.a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.06 * i, duration: 0.35, ease: "easeOut" as const }}
+                  className="font-display py-3 text-5xl uppercase tracking-wide text-zinc-200 transition-colors hover:text-arena-orange"
+                >
+                  {l.label}
+                </motion.a>
+              ))}
+              <motion.a
+                href={whatsappLink("Hi KAKX Arena! I want to book a slot.")}
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.35, ease: "easeOut" as const }}
+                className="btn-primary mt-8 w-full"
+              >
+                Book Now on WhatsApp
+              </motion.a>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

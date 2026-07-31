@@ -1,16 +1,49 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        brand: {
-          green: "#16A34A",
-          dark: "#0A0A0A",
+        arena: {
+          bg: "#0B0B0D",
+          panel: "#131318",
+          card: "#18181F",
+          line: "rgba(255,255,255,0.08)",
+          orange: "#FF6B00",
+          amber: "#F5A623",
+          gold: "#E8B84B",
         },
+      },
+      fontFamily: {
+        display: ["var(--font-bebas)", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-14px)" },
+        },
+        pulseGlow: {
+          "0%, 100%": { opacity: "0.5" },
+          "50%": { opacity: "1" },
+        },
+        spinSlow: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 28s linear infinite",
+        float: "float 6s ease-in-out infinite",
+        pulseGlow: "pulseGlow 4s ease-in-out infinite",
+        spinSlow: "spinSlow 14s linear infinite",
       },
     },
   },
   plugins: [],
 };
+module.exports = config;
