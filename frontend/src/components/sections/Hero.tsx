@@ -1,9 +1,10 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
 import { marqueeItems, siteConfig, whatsappLink } from "@/data/site";
 
 const CricketBall = lazy(() => import("@/components/three/CricketBall"));
+const CricketBallStatic = lazy(() => import("@/components/three/CricketBallStatic"));
 
 const fadeUp = {
   hidden: { opacity: 0, y: 34 },
@@ -42,10 +43,20 @@ function StaggerTitle({ text, gradient }: { text: string; gradient?: boolean }) 
   );
 }
 
+/** Detect mobile viewport — only check once on mount, no resize listener */
+function useIsMobile() {
+  const [mobile, setMobile] = useState(true);
+  useEffect(() => {
+    setMobile(window.matchMedia("(max-width: 640px)").matches);
+  }, []);
+  return mobile;
+}
+
 export default function Hero() {
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 800], [0, 170]);
   const bgOpacity = useTransform(scrollY, [0, 600], [0.14, 0]);
+  const isMobile = useIsMobile();
 
   return (
     <section id="top" className="relative overflow-hidden pt-16 sm:pt-20">
@@ -156,7 +167,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D column — same ball on every screen */}
+        {/* 3D column — WebGL on desktop, lightweight CSS on mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -171,7 +182,7 @@ export default function Hero() {
               </div>
             }
           >
-            <CricketBall />
+            {isMobile ? <CricketBallStatic /> : <CricketBall />}
           </Suspense>
         </motion.div>
       </div>
