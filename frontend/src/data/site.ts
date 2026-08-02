@@ -44,17 +44,16 @@ export const sports: Sport[] = [
     accent: "orange",
   },
   {
-    id: "academy",
-    name: "Pro Academy",
-    surface: "Cricket & Badminton Coaching",
-    price: 300,
+    id: "football",
+    name: "7v7 Football",
+    surface: "Turf",
+    price: 325,
     unit: "/session",
-    image: "/images/g3.jpg",
-    tagline: "Pro coaching for cricket and badminton — bowling machine, footwork drills and match practice.",
-    features: ["Bowling machine", "Cricket & badminton coaching", "All skill levels", "Match practice"],
+    image: "/images/g1.jpg",
+    tagline: "Full-size 7v7 turf for fast-paced football action day or night.",
+    features: ["7v7 turf", "Floodlights", "Boots available", "Open 24 hrs"],
     accent: "gold",
-    badge: "PRO COACHING",
-    featured: true,
+    badge: "TURF",
   },
   {
     id: "badminton",
@@ -118,12 +117,12 @@ export const stats = [
   { value: 4.8, decimals: 1, suffix: "", label: "Google Rating" },
   { value: 82, decimals: 0, suffix: "+", label: "Happy Players" },
   { value: 24, decimals: 0, suffix: "/7", label: "Always Open" },
-  { value: 4, decimals: 0, suffix: "+", label: "Sports" },
+  { value: 5, decimals: 0, suffix: "+", label: "Sports" },
 ];
 
 export const marqueeItems = [
-  "BOX CRICKET", "PRO ACADEMY", "BADMINTON", "PICKLEBALL",
-  "OPEN 24 HOURS", "FLOODLIT NIGHTS", "PRO COACHING", "BOOK ON WHATSAPP",
+  "BOX CRICKET", "7v7 FOOTBALL", "BADMINTON", "PICKLEBALL",
+  "OPEN 24 HOURS", "FLOODLIT NIGHTS", "BOOK ON WHATSAPP",
 ];
 
 export const whatsappNumber = siteConfig.whatsapp;
