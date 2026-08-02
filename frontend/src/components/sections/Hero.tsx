@@ -4,7 +4,7 @@ import { ArrowRight, MapPin, Phone, Star } from "lucide-react";
 import { marqueeItems, siteConfig, whatsappLink } from "@/data/site";
 
 const CricketBall = lazy(() => import("@/components/three/CricketBall"));
-const CricketBallStatic = lazy(() => import("@/components/three/CricketBallStatic"));
+const CricketBallAmbient = lazy(() => import("@/components/three/CricketBallAmbient"));
 
 const fadeUp = {
   hidden: { opacity: 0, y: 34 },
@@ -81,9 +81,13 @@ export default function Hero() {
       <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-green/25" />
       <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-lime/15" />
 
-      <div className="container-x relative grid min-h-[calc(100vh-5rem)] items-center gap-8 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-4">
+      <div className="container-x relative min-h-[calc(100vh-5rem)] py-14 sm:grid sm:items-center sm:gap-8 sm:grid-cols-[1.1fr_0.9fr] sm:gap-4">
         {/* text column */}
         <div className="relative z-10">
+          {/* ambient ball — mobile only, behind text */}
+          <Suspense fallback={null}>
+            <CricketBallAmbient />
+          </Suspense>
           <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible" className="mb-6 flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur">
               <Star className="h-3.5 w-3.5 fill-arena-mint text-arena-mint" />
@@ -182,7 +186,7 @@ export default function Hero() {
               </div>
             }
           >
-            {isMobile ? <CricketBallStatic /> : <CricketBall />}
+            {isMobile ? null : <CricketBall />}
           </Suspense>
         </motion.div>
       </div>
