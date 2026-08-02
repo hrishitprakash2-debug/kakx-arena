@@ -31,7 +31,7 @@ section[id] {
     animation: none;
   }
   .animate-marquee {
-    animation: none;
+    animation-duration: 40s;
   }
   .card-sheen::after {
     display: none;
