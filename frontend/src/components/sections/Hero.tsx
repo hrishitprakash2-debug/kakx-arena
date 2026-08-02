@@ -81,7 +81,7 @@ export default function Hero() {
       <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-green/25" />
       <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-lime/15" />
 
-      <div className="container-x relative min-h-[calc(100vh-5rem)] py-14 sm:grid sm:items-center sm:gap-8 sm:grid-cols-[1.1fr_0.9fr] sm:gap-4">
+      <div className="container-x relative min-h-[calc(100vh-5rem)] py-14 sm:min-h-[calc(100vh-5rem)] sm:grid sm:items-center sm:gap-8 sm:grid-cols-[1.1fr_0.9fr] sm:gap-4 max-sm:min-h-auto max-sm:py-20">
         {/* text column */}
         <div className="relative z-10">
           {/* ambient ball — mobile only, behind text */}
@@ -171,12 +171,12 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D column — WebGL on desktop, lightweight CSS on mobile */}
+        {/* 3D column — desktop only */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease: "easeOut" as const }}
-          className="relative z-0 h-[300px] sm:h-[420px] lg:h-[560px]"
+          className="relative z-0 hidden h-[420px] lg:block lg:h-[560px]"
         >
           <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[60px] max-sm:blur-[24px]" />
           <Suspense
