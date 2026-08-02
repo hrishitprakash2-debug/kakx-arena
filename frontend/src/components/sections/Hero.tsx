@@ -171,24 +171,26 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* 3D column — desktop only */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease: "easeOut" as const }}
-          className="relative z-0 hidden h-[420px] lg:block lg:h-[560px]"
-        >
-          <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[60px] max-sm:blur-[24px]" />
-          <Suspense
-            fallback={
-              <div className="flex h-full w-full items-center justify-center">
-                <div className="h-40 w-40 animate-spinSlow rounded-full border-2 border-dashed border-arena-green/40" />
-              </div>
-            }
+        {/* 3D column — desktop only, completely removed from DOM on mobile */}
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.1, ease: "easeOut" as const }}
+            className="relative z-0 h-[420px] lg:h-[560px]"
           >
-            {isMobile ? null : <CricketBall />}
-          </Suspense>
-        </motion.div>
+            <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[60px]" />
+            <Suspense
+              fallback={
+                <div className="flex h-full w-full items-center justify-center">
+                  <div className="h-40 w-40 animate-spinSlow rounded-full border-2 border-dashed border-arena-green/40" />
+                </div>
+              }
+            >
+              <CricketBall />
+            </Suspense>
+          </motion.div>
+        )}
       </div>
 
       {/* marquee strip — not rotated on phones (rotation forces a huge GPU layer) */}
