@@ -35,7 +35,7 @@ export default function Booking() {
   const days = useMemo(() => nextDays(7), []);
   const selectedSport = sports.find((s) => s.id === sport);
 
-  const message = `Hi KAKX Arena! I want to book a slot.%0A%0A🏟 Sport: ${selectedSport?.name ?? ""}%0A📅 Date: ${date ?? ""}%0A⏰ Time: ${slot ?? ""}%0A👤 Name: ${name || "—"}`;
+  const message = `Hi KAKX Arena! I want to book a slot.%0A%0ASport: ${selectedSport?.name ?? ""}%0ADate: ${date ?? ""}%0ATime: ${slot ?? ""}%0AName: ${name || "—"}`;
   const waLink = `https://wa.me/918375060708?text=${message}`;
 
   const canNext =
@@ -167,7 +167,6 @@ export default function Booking() {
                         : "border-white/10 bg-white/[0.03] hover:border-white/25"
                     }`}
                   >
-                    <span className="text-3xl">{s.emoji}</span>
                     <span className="text-xs font-bold text-white">{s.name}</span>
                     <span className="text-[10px] text-zinc-500">
                       ₹{s.price}
@@ -251,7 +250,7 @@ export default function Booking() {
                     Booking Summary
                   </p>
                   <p className="mt-2 text-sm text-zinc-300">
-                    {selectedSport?.emoji} {selectedSport?.name} · ₹{selectedSport?.price}
+                    {selectedSport?.name} · ₹{selectedSport?.price}
                     {selectedSport?.unit} — {date} at {slot}
                   </p>
                 </div>

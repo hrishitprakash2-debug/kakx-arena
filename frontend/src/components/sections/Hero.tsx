@@ -112,7 +112,7 @@ export default function Hero() {
             animate="visible"
             className="font-display mt-3 text-2xl uppercase tracking-[0.25em] text-zinc-300 sm:text-3xl"
           >
-            Fuel Your Play ⚡
+            Fuel Your Play
           </motion.p>
 
           <motion.p
@@ -193,7 +193,7 @@ export default function Hero() {
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="flex items-center gap-8 font-display text-lg uppercase tracking-[0.2em] text-black">
               {item}
-              <span className="text-black/50">★</span>
+              <span className="text-black/50">—</span>
             </span>
           ))}
         </div>

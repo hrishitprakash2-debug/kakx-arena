@@ -79,7 +79,6 @@ function SportCard({ sport }: { sport: Sport }) {
 
         <div className="flex flex-1 flex-col p-6">
           <div className="mb-1 flex items-center justify-between">
-            <span className="text-2xl">{sport.emoji}</span>
             <span className="font-display text-3xl tracking-wide text-white">
               ₹{sport.price}
               <span className="text-base text-zinc-500"> {sport.unit}</span>

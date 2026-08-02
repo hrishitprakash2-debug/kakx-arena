@@ -28,18 +28,15 @@ export default function CricketBallStatic() {
           <div className="absolute left-[15%] top-1/2 h-[2px] w-[70%] -translate-y-1/2 rounded-full bg-[#f5f5dc]/60" />
         </div>
 
-        {/* orbiting mini items */}
+        {/* orbiting dots */}
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
           className="absolute inset-0"
         >
-          {/* bat icon */}
-          <div className="absolute -left-8 top-1/2 -translate-y-1/2 text-lg">🏏</div>
-          {/* shuttle icon */}
-          <div className="absolute -right-8 top-1/2 -translate-y-1/2 text-lg">🏸</div>
-          {/* paddle icon */}
-          <div className="absolute left-1/2 -top-8 -translate-x-1/2 text-lg">🏓</div>
+          <div className="absolute -left-8 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-arena-green/60" />
+          <div className="absolute -right-8 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-arena-lime/60" />
+          <div className="absolute left-1/2 -top-8 -translate-x-1/2 h-2 w-2 rounded-full bg-arena-mint/60" />
         </motion.div>
       </motion.div>
 

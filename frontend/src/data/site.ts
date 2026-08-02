@@ -5,7 +5,7 @@ export const siteConfig = {
     "KAKX Arena — Wave City's premium sports destination in Sector-11, Ghaziabad. Box Cricket, Cricket Academy, Badminton & Pickleball. Open 24 hours, floodlit nights. Book your slot on WhatsApp.",
   address: "Sector-11, Wave City, Ghaziabad, Uttar Pradesh 201015",
   phoneDisplay: "083750 60708",
-  phone: "+918****0708",
+  phone: "+918375060708",
   whatsapp: "918375060708",
   instagram: "https://www.instagram.com/kakx.arena",
   website: "kakx.in",
@@ -23,7 +23,6 @@ export type Sport = {
   surface: string;
   price: number;
   unit: string;
-  emoji: string;
   image: string;
   tagline: string;
   features: string[];
@@ -39,7 +38,6 @@ export const sports: Sport[] = [
     surface: "Enclosed Turf Pitch",
     price: 325,
     unit: "/hr",
-    emoji: "🏏",
     image: "/images/g1.jpg",
     tagline: "Non-stop boundary hitting in a fully enclosed turf arena.",
     features: ["Enclosed netting", "Turf pitch", "Floodlights", "Ball & kit rental"],
@@ -51,7 +49,6 @@ export const sports: Sport[] = [
     surface: "Cricket & Badminton Coaching",
     price: 300,
     unit: "/session",
-    emoji: "🎯",
     image: "/images/g3.jpg",
     tagline: "Pro coaching for cricket and badminton — bowling machine, footwork drills and match practice.",
     features: ["Bowling machine", "Cricket & badminton coaching", "All skill levels", "Match practice"],
@@ -65,7 +62,6 @@ export const sports: Sport[] = [
     surface: "Synthetic Court",
     price: 200,
     unit: "/hr",
-    emoji: "🏸",
     image: "/images/g4.jpg",
     tagline: "International-standard synthetic courts, day or night.",
     features: ["Synthetic court", "International lighting", "Racket rental", "Open 24 hrs"],
@@ -77,7 +73,6 @@ export const sports: Sport[] = [
     surface: "Dedicated Court",
     price: 300,
     unit: "/hr",
-    emoji: "🏓",
     image: "/images/g2.jpg",
     tagline: "The fastest-growing sport in India — easy to learn, hard to stop.",
     features: ["Dedicated court", "Paddles available", "Beginner friendly", "Night play"],
@@ -120,7 +115,7 @@ export const reviews = [
 ];
 
 export const stats = [
-  { value: 4.8, decimals: 1, suffix: "★", label: "Google Rating" },
+  { value: 4.8, decimals: 1, suffix: "", label: "Google Rating" },
   { value: 82, decimals: 0, suffix: "+", label: "Happy Players" },
   { value: 24, decimals: 0, suffix: "/7", label: "Always Open" },
   { value: 4, decimals: 0, suffix: "+", label: "Sports" },
