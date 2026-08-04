@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  @page { size: A5 landscape; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0B0B0D; color: #fff; }
+
+  .pamphlet {
+    width: 210mm; height: 148mm; position: relative; overflow: hidden;
+    background: #0B0B0D;
+  }
+
+  /* neon glow strip */
+  .strip {
+    position: absolute; left: 0; right: 0;
+    background: linear-gradient(90deg, #A3E635, #C6F56A, #A3E635);
+  }
+  .strip-top { top: 0; height: 4mm; }
+  .strip-bottom { bottom: 0; height: 4mm; }
+
+  /* background grid */
+  .grid-bg {
+    position: absolute; inset: 0; opacity: 0.5;
+    background-image:
+      linear-gradient(rgba(163,230,53,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(163,230,53,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* glow blobs */
+  .blob {
+    position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none;
+  }
+  .blob-1 { width: 140px; height: 140px; background: rgba(163,230,53,0.25); top: -40px; right: -30px; }
+  .blob-2 { width: 120px; height: 120px; background: rgba(163,230,53,0.18); bottom: -40px; left: -30px; }
+
+  .content { position: relative; padding: 12mm 14mm; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+
+  .top-row { display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-family: 'Bebas Neue', sans-serif; font-size: 22pt; letter-spacing: 0.08em; }
+  .brand span { color: #A3E635; }
+
+  .grand-opening {
+    display: inline-block; border: 2px solid #A3E635; border-radius: 8px;
+    padding: 2mm 5mm; text-align: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 14pt; letter-spacing: 0.15em;
+    color: #A3E635;
+  }
+  .grand-opening small { display: block; font-family: 'Inter', sans-serif; font-size: 6.5pt; letter-spacing: 0.3em; color: #A3E635; font-weight: 600; }
+
+  .mid-row { text-align: center; }
+  .title { font-family: 'Bebas Neue', sans-serif; font-size: 44pt; line-height: 1; letter-spacing: 0.06em; }
+  .title .lime { color: #A3E635; }
+  .subtitle { margin-top: 4mm; font-size: 9pt; letter-spacing: 0.08em; text-transform: uppercase; color: #c0c0c0; font-weight: 600; }
+
+  .sports { display: flex; justify-content: center; gap: 8mm; margin-top: 6mm; }
+  .sport { display: flex; flex-direction: column; align-items: center; gap: 1.5mm; }
+  .sport .icon { width: 14mm; height: 14mm; border: 1.5px solid rgba(163,230,53,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 7pt; font-weight: 700; color: #A3E635; }
+  .sport .label { font-size: 6.5pt; letter-spacing: 0.12em; text-transform: uppercase; color: #d0d0d0; font-weight: 600; }
+
+  .offer-box {
+    display: flex; align-items: center; justify-content: space-between;
+    border: 1.5px solid #A3E635; border-radius: 8px;
+    background: rgba(163,230,53,0.08);
+    padding: 3mm 6mm;
+  }
+  .offer-left .tag { font-size: 6pt; letter-spacing: 0.25em; text-transform: uppercase; color: #A3E635; font-weight: 700; }
+  .offer-left .text { font-family: 'Bebas Neue', sans-serif; font-size: 15pt; letter-spacing: 0.05em; margin-top: 1mm; }
+  .offer-right { text-align: right; }
+  .offer-right .hurry { font-family: 'Bebas Neue', sans-serif; font-size: 14pt; color: #A3E635; letter-spacing: 0.1em; }
+  .offer-right .until { font-size: 6.5pt; color: #c0c0c0; text-transform: uppercase; letter-spacing: 0.12em; margin-top: 1mm; }
+
+  .bottom-row { display: flex; justify-content: space-between; align-items: center; }
+  .contact { font-size: 8pt; color: #c0c0c0; }
+  .contact strong { color: #fff; font-size: 11pt; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 2mm;
+    background: #A3E635; color: #000; border-radius: 99px;
+    padding: 2.5mm 6mm; font-weight: 800; font-size: 9pt; letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+  <div class="pamphlet">
+    <div class="strip strip-top"></div>
+    <div class="strip strip-bottom"></div>
+    <div class="grid-bg"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="content">
+      <div class="top-row">
+        <div class="brand">KAKX<span> ARENA</span></div>
+        <div class="grand-opening">
+          GRAND OPENING
+          <small>16 AUGUST</small>
+        </div>
+      </div>
+
+      <div class="mid-row">
+        <div class="title">FUEL YOUR <span class="lime">PLAY</span></div>
+        <div class="subtitle">Wave City's Premium Sports Destination — Open 24 Hours · Floodlit Nights</div>
+        <div class="sports">
+          <div class="sport"><div class="icon">🏏</div><div class="label">Box Cricket</div></div>
+          <div class="sport"><div class="icon">⚽</div><div class="label">7v7 Football</div></div>
+          <div class="sport"><div class="icon">🏸</div><div class="label">Badminton</div></div>
+          <div class="sport"><div class="icon">🏓</div><div class="label">Pickleball</div></div>
+        </div>
+      </div>
+
+      <div class="offer-box">
+        <div class="offer-left">
+          <div class="tag">Special Inaugural Offer</div>
+          <div class="text">BOOK YOUR SLOT TODAY</div>
+        </div>
+        <div class="offer-right">
+          <div class="hurry">HURRY UP!</div>
+          <div class="until">Offer valid till opening</div>
+        </div>
+      </div>
+
+      <div class="bottom-row">
+        <div class="contact">
+          Sector-11, Wave City, Ghaziabad<br>
+          <strong>083750 60708</strong> · WhatsApp booking
+        </div>
+        <div class="cta">Book on WhatsApp →</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

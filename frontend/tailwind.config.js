@@ -9,9 +9,9 @@ const config = {
           panel: "#131318",
           card: "#18181F",
           line: "rgba(255,255,255,0.08)",
-          green: "#A3E635",
-          mint: "#4ADE80",
-          lime: "#C9F24A",
+          green: "#10B981",
+          mint: "#10B981",
+          lime: "#34D399",
         },
       },
       fontFamily: {

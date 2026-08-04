@@ -121,8 +121,17 @@ export const stats = [
 ];
 
 export const marqueeItems = [
-  "BOX CRICKET", "7v7 FOOTBALL", "BADMINTON", "PICKLEBALL",
+  "BOX CRICKET", "7V7 FOOTBALL", "BADMINTON", "PICKLEBALL",
   "OPEN 24 HOURS", "FLOODLIT NIGHTS", "BOOK ON WHATSAPP",
+];
+
+export const featureMarquee = [
+  "Floodlit Nights",
+  "Turf Pitches",
+  "Pro Coaching",
+  "Open 24 Hours",
+  "Book on WhatsApp",
+  "No Apps · No Middlemen",
 ];
 
 export const whatsappNumber = siteConfig.whatsapp;
