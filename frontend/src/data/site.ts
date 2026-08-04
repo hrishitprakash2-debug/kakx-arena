@@ -15,6 +15,7 @@ export const siteConfig = {
   mapsEmbed:
     "https://www.google.com/maps?q=KAKX+Arena,+Sector-11,+Wave+City,+Ghaziabad,+Uttar+Pradesh+201015&output=embed",
   mapsLink: "https://maps.google.com/?q=KAKX+Arena,+Sector-11,+Wave+City,+Ghaziabad",
+  hudleLink: "https://hudle.in/venues/kakx-arena-wave-city/524572",
 };
 
 export type Sport = {

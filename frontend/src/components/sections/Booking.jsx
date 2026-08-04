@@ -8,7 +8,7 @@ import {
   Clock,
   Phone,
 } from "lucide-react";
-import { sports, timeSlots } from "@/data/site";
+import { sports, timeSlots, siteConfig } from "@/data/site";
 const STEPS = ["Sport", "Date & Time", "Details"];
 function nextDays(n) {
   const out = [];
@@ -248,6 +248,15 @@ function Booking() {
                   className="btn-primary mt-6 w-full !py-4"
                 >
                   Confirm on WhatsApp <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href={siteConfig.hudleLink}
+                  data-wa-label="booking-hudle"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-arena-mint/50 bg-arena-mint/10 py-3.5 text-sm font-bold text-arena-mint transition-all duration-300 hover:bg-arena-mint hover:text-black"
+                >
+                  <CalendarDays className="h-4 w-4" /> Book on Hudle — Instant Slots
                 </a>
                 <p className="mt-3 text-center text-xs text-zinc-500">
                   Opens WhatsApp with your booking details pre-filled — or call{" "}

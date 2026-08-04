@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ArrowUpRight, Zap } from "lucide-react";
-import { sports, whatsappLink } from "@/data/site";
+import { ArrowUpRight, CalendarDays, Zap } from "lucide-react";
+import { siteConfig, sports, whatsappLink } from "@/data/site";
 const accentMap = {
   orange: {
     glow: "group-hover:shadow-[0_20px_70px_-15px_rgba(16,185,129,0.45)]",
@@ -116,7 +116,7 @@ function SportCard({ sport }) {
           </ul>
           <a
             href={whatsappLink(
-              `Hi KAKX Arena! I want to book ${sport.name} (\u20B9${sport.price}${sport.unit}). Please share available slots.`,
+              `Hi KAKX Arena! I want to book ${sport.name} (₹${sport.price}${sport.unit}). Please share available slots.`,
             )}
             data-wa-label={`sport-${sport.id}`}
             target="_blank"
@@ -124,6 +124,15 @@ function SportCard({ sport }) {
             className={`mt-6 inline-flex items-center justify-center gap-1.5 rounded-full border border-white/15 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 group-hover:border-arena-green group-hover:bg-arena-green group-hover:text-black ${a.text}`}
           >
             Book Now <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+          <a
+            href={siteConfig.hudleLink}
+            data-wa-label={`sport-hudle-${sport.id}`}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2.5 inline-flex items-center justify-center gap-1.5 rounded-full bg-arena-mint px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-black transition-all duration-300 hover:brightness-110"
+          >
+            <CalendarDays className="h-3.5 w-3.5" /> Book on Hudle
           </a>
         </div>
       </article>
