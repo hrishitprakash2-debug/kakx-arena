@@ -50,16 +50,12 @@ function Header() {
         className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,color] duration-500 ${hidden && !open ? "-translate-y-full" : "translate-y-0"} ${scrolled ? "bg-black/95 max-md:bg-black/95" : "bg-transparent"}`}
       >
         <div className="container-x flex h-16 items-center justify-between sm:h-20">
-          <a href="#top" className="flex items-center gap-2.5">
+          <a href="#top" className="flex items-center">
             <img
-              src="/icon.png"
-              alt=""
-              className="h-8 w-8 rounded-lg border border-arena-green/30 sm:h-9 sm:w-9"
+              src="/logo.png"
+              alt="KAKX Arena"
+              className="h-10 sm:h-12"
             />
-            <span className="flex items-baseline gap-1 font-display text-2xl tracking-wider sm:text-3xl">
-              <span className="text-gradient-green">KAKX</span>
-              <span className="text-white">ARENA</span>
-            </span>
           </a>
           <nav className="hidden items-center gap-8 lg:flex">
             {links.map((l) => (
@@ -102,16 +98,12 @@ function Header() {
             className="fixed inset-0 z-[60] flex flex-col bg-black/95 lg:hidden"
           >
             <div className="container-x flex h-16 items-center justify-between">
-              <span className="flex items-center gap-2.5">
+              <span className="flex items-center">
                 <img
-                  src="/icon.png"
-                  alt=""
-                  className="h-8 w-8 rounded-lg border border-arena-green/30"
+                  src="/logo.png"
+                  alt="KAKX Arena"
+                  className="h-10"
                 />
-                <span className="font-display text-2xl tracking-wider">
-                  <span className="text-gradient-green">KAKX</span>
-                  <span className="text-white">ARENA</span>
-                </span>
               </span>
               <button
                 onClick={() => setOpen(false)}

@@ -57,12 +57,13 @@ function Footer() {
         <div className="sm:col-span-2 lg:col-span-1">
           <a
             href="#top"
-            className="flex items-baseline justify-center gap-2 lg:justify-start"
+            className="flex items-center justify-center lg:justify-start"
           >
-            <span className="font-display text-2xl tracking-[0.06em] text-white">
-              KAKX
-            </span>
-            <span className="h-2.5 w-2.5 rounded-full bg-arena-mint" />
+            <img
+              src="/logo.png"
+              alt="KAKX Arena"
+              className="h-10"
+            />
           </a>
           <p className="mx-auto mt-5 max-w-xs text-sm leading-relaxed text-zinc-500 lg:mx-0">
             Wave City&apos;s premium sports destination — box cricket, football,
