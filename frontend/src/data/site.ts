@@ -52,7 +52,7 @@ export const sports: Sport[] = [
     price: 450,
     priceMax: 600,
     unit: "/session",
-    image: "/images/g1.jpg",
+    image: "/images/g7.jpg",
     tagline: "Full-size 7v7 turf for fast-paced football action day or night.",
     features: ["7v7 turf", "Floodlights", "Boots available", "Open 24 hrs"],
     accent: "gold",

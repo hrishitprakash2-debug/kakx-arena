@@ -25,9 +25,10 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://kakx-arena.vercel.app/" />
-    <meta property="og:image" content="https://kakx-arena.vercel.app/images/hero.jpg" />
+    <meta property="og:image" content="https://kakx-arena.vercel.app/images/g8.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="KAKX Arena — Wave City Ghaziabad" />
     <meta property="og:site_name" content="KAKX Arena" />
     <meta property="og:locale" content="en_IN" />
 
@@ -38,7 +39,7 @@
       name="twitter:description"
       content="Wave City's premium sports destination. Box Cricket, Badminton, Pickleball & Pro Academy. Open 24 hours. Book on WhatsApp."
     />
-    <meta name="twitter:image" content="https://kakx-arena.vercel.app/images/hero.jpg" />
+    <meta name="twitter:image" content="https://kakx-arena.vercel.app/images/g8.jpg" />
 
     <!-- Favicons -->
     <link rel="icon" href="/icon.png" />
@@ -58,10 +59,10 @@
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
         "name": "KAKX Arena",
-        "image": "https://kakx-arena.vercel.app/images/hero.jpg",
+        "image": "https://kakx-arena.vercel.app/images/g8.jpg",
         "url": "https://kakx-arena.vercel.app",
         "telephone": "+918375060708",
-        "priceRange": "₹200 - ₹325",
+        "priceRange": "₹200 - ₹600",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Sector-11, Wave City",
@@ -103,6 +104,15 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
+                "name": "7v7 Football"
+              },
+              "price": "450",
+              "priceCurrency": "INR"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
                 "name": "Badminton"
               },
               "price": "200",
@@ -121,9 +131,9 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "7v7 Football"
+                "name": "Cricket Academy"
               },
-              "price": "325",
+              "price": "200",
               "priceCurrency": "INR"
             }
           ]
@@ -132,6 +142,43 @@
           "https://www.instagram.com/kakx.arena",
           "https://www.google.com/maps/place/KAKX+Arena"
         ]
+      }
+    </script>
+
+    <!-- LocalBusiness schema for Google Maps / local pack -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "KAKX Arena",
+        "image": "https://kakx-arena.vercel.app/images/g8.jpg",
+        "url": "https://kakx-arena.vercel.app",
+        "telephone": "+918375060708",
+        "priceRange": "₹200 - ₹600",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sector-11, Wave City",
+          "addressLocality": "Ghaziabad",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "201015",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "28.6692",
+          "longitude": "77.4538"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "82"
+        }
       }
     </script>
 
@@ -187,6 +234,22 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Sector-11, Wave City, Ghaziabad, Uttar Pradesh 201015 — with parking available at the venue."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does box cricket cost at KAKX Arena?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Box cricket starts at ₹325 per hour. 7v7 Football is ₹450-600 per session. Badminton is ₹200-250 per hour. Pickleball is ₹300 per hour."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does KAKX Arena have parking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, parking is available at the venue for all players and visitors."
             }
           }
         ]

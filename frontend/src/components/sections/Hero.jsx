@@ -19,6 +19,20 @@ const heroCards = [
     href: "#booking",
   },
   {
+    src: "/images/g7.jpg",
+    alt: "7v7 football turf action at KAKX Arena",
+    tag: "Football",
+    cta: "7v7 Football · ₹450/session",
+    href: "#booking",
+  },
+  {
+    src: "/images/g5.jpg",
+    alt: "Indoor badminton court with KAKX branding",
+    tag: "Badminton",
+    cta: "Badminton · ₹200/hr",
+    href: "#booking",
+  },
+  {
     src: "/images/g3.jpg",
     alt: "Cricket academy training session",
     tag: "Academy",
@@ -28,11 +42,11 @@ const heroCards = [
     ),
   },
   {
-    src: "/images/g2.jpg",
-    alt: "Pickleball court at KAKX Arena",
-    tag: "Pickleball",
-    cta: "Pickleball · ₹300/hr",
-    href: "#booking",
+    src: "/images/g8.jpg",
+    alt: "KAKX Arena exterior — Wave City, Ghaziabad",
+    tag: "Arena",
+    cta: "Visit Us",
+    href: "#contact",
   },
 ];
 const fadeUp = {

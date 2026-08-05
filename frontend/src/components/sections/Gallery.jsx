@@ -84,6 +84,7 @@ function Gallery() {
             className="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
           >
             <button
+              onClick={() => setActive(null)}
               className="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white"
               aria-label="Close"
             >
