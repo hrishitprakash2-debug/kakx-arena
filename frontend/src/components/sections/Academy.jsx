@@ -1,12 +1,7 @@
 import { motion } from "framer-motion";
-import { Check, Feather, Target, TrendingUp } from "lucide-react";
+import { Check, Feather, TrendingUp } from "lucide-react";
 import { whatsappLink } from "@/data/site";
 const features = [
-  {
-    icon: Target,
-    title: "Bowling Machine",
-    desc: "Face real match-speed deliveries and sharpen your timing.",
-  },
   {
     icon: Feather,
     title: "Badminton Coaching",
@@ -92,7 +87,7 @@ function Academy() {
             KAKX Academy offers professional coaching for{" "}
             <span className="font-semibold text-white">cricket</span> and{" "}
             <span className="font-semibold text-white">badminton</span>.
-            Cricketers train on the bowling machine with structured nets;
+            Cricketers train with structured nets and match practice;
             badminton players build footwork, strokes and match play on our
             synthetic courts.
           </motion.p>
