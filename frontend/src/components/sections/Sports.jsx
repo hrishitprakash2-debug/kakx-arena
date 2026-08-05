@@ -90,6 +90,9 @@ function SportCard({ sport }) {
           <div className="mb-1 flex items-center justify-between">
             <span className="font-display text-3xl tracking-wide text-white">
               ₹{sport.price}
+              {sport.priceMax ? (
+                <span className="text-base text-zinc-500">–{sport.priceMax}</span>
+              ) : null}
               <span className="text-base text-zinc-500"> {sport.unit}</span>
             </span>
           </div>

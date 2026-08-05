@@ -23,6 +23,7 @@ export type Sport = {
   name: string;
   surface: string;
   price: number;
+  priceMax?: number; // peak/evening rate when pricing is a range
   unit: string;
   image: string;
   tagline: string;
@@ -48,7 +49,8 @@ export const sports: Sport[] = [
     id: "football",
     name: "7v7 Football",
     surface: "Turf",
-    price: 325,
+    price: 450,
+    priceMax: 600,
     unit: "/session",
     image: "/images/g1.jpg",
     tagline: "Full-size 7v7 turf for fast-paced football action day or night.",
@@ -61,6 +63,7 @@ export const sports: Sport[] = [
     name: "Badminton",
     surface: "Synthetic Court",
     price: 200,
+    priceMax: 250,
     unit: "/hr",
     image: "/images/g4.jpg",
     tagline: "International-standard synthetic courts, day or night.",
