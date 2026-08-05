@@ -139,7 +139,7 @@ function Hero() {
       </motion.div>
       <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-green/25" />
       <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-lime/15" />
-      <div className="container-x relative py-14 lg:grid lg:min-h-[calc(100vh-5rem)] lg:items-center lg:gap-4 lg:grid-cols-[1.1fr_0.9fr] max-lg:py-20">
+      <div className="container-x relative py-14 lg:grid lg:min-h-[calc(100vh-5rem)] lg:items-center lg:gap-4 lg:grid-cols-[1fr_1.2fr] max-lg:py-20">
         {/* text column */}
         <div className="relative z-10">
           <motion.div
@@ -278,7 +278,7 @@ function Hero() {
                       }
                     }}
                     animate={{
-                      x: `${offset * 34}%`,
+                      x: `${offset * 28}%`,
                       y: "-50%",
                       scale: isCenter ? 1 : 0.82,
                       opacity: isCenter ? 1 : 0.45,
@@ -290,7 +290,7 @@ function Hero() {
                       stiffness: 260,
                       damping: 28,
                     }}
-                    className="group absolute inset-x-0 top-1/2 mx-auto h-[86%] w-[68%] max-w-[440px] overflow-hidden rounded-[2rem] border border-arena-green/30 text-left shadow-[0_0_60px_rgba(16,185,129,0.3)]"
+                    className="group absolute inset-x-0 top-1/2 mx-auto h-[86%] w-[60%] max-w-[400px] overflow-hidden rounded-[2rem] border border-arena-green/30 text-left shadow-[0_0_60px_rgba(16,185,129,0.3)]"
                     aria-label={card.alt}
                   >
                     <img
