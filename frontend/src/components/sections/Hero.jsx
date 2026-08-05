@@ -41,13 +41,6 @@ const heroCards = [
       "Hi KAKX Arena! I want to join the Academy (cricket/badminton coaching). Please share program details and timings.",
     ),
   },
-  {
-    src: "/images/g8.jpg",
-    alt: "KAKX Arena exterior — Wave City, Ghaziabad",
-    tag: "Arena",
-    cta: "Visit Us",
-    href: "#contact",
-  },
 ];
 const fadeUp = {
   hidden: { opacity: 0, y: 34 },
