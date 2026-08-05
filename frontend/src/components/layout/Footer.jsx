@@ -60,7 +60,7 @@ function Footer() {
             className="flex items-center justify-center lg:justify-start"
           >
             <img
-              src="/logo.png"
+              src="/logo-transparent.png"
               alt="KAKX Arena"
               className="h-10"
             />

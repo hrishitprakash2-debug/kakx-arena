@@ -52,7 +52,7 @@ function Header() {
         <div className="container-x flex h-16 items-center justify-between sm:h-20">
           <a href="#top" className="flex items-center">
             <img
-              src="/logo.png"
+              src="/logo-transparent.png"
               alt="KAKX Arena"
               className="h-10 sm:h-12"
             />
@@ -100,7 +100,7 @@ function Header() {
             <div className="container-x flex h-16 items-center justify-between">
               <span className="flex items-center">
                 <img
-                  src="/logo.png"
+                  src="/logo-transparent.png"
                   alt="KAKX Arena"
                   className="h-10"
                 />
