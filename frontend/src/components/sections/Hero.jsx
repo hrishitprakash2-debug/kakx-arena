@@ -236,7 +236,7 @@ function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, ease: "easeOut" }}
-            className="relative z-0 h-[420px] overflow-hidden lg:h-[560px]"
+            className="relative z-0 h-[420px] overflow-hidden lg:ml-10 lg:h-[560px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
