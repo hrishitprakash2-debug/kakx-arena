@@ -41,7 +41,7 @@ export const sports: Sport[] = [
     price: 900,
     priceMax: 1500,
     unit: "/hr",
-    image: "/images/g1.jpg",
+    image: "/images/g1.webp",
     tagline: "Non-stop boundary hitting in a fully enclosed turf arena.",
     features: ["Enclosed netting", "Turf pitch", "Floodlights", "Ball & kit rental"],
     accent: "orange",
@@ -53,7 +53,7 @@ export const sports: Sport[] = [
     price: 450,
     priceMax: 600,
     unit: "/session",
-    image: "/images/g7.jpg",
+    image: "/images/g7.webp",
     tagline: "Full-size 7v7 turf for fast-paced football action day or night.",
     features: ["7v7 turf", "Floodlights", "Boots available", "Open 24 hrs"],
     accent: "gold",
@@ -66,7 +66,7 @@ export const sports: Sport[] = [
     price: 200,
     priceMax: 250,
     unit: "/hr",
-    image: "/images/g9.jpg",
+    image: "/images/g9.webp",
     tagline: "International-standard synthetic courts, day or night.",
     features: ["Synthetic court", "International lighting", "Racket rental", "Open 24 hrs"],
     accent: "green",
@@ -78,7 +78,7 @@ export const sports: Sport[] = [
     price: 600,
     priceMax: 1000,
     unit: "/hr",
-    image: "/images/g2.jpg",
+    image: "/images/g2.webp",
     tagline: "The fastest-growing sport in India — easy to learn, hard to stop.",
     features: ["Dedicated court", "Paddles available", "Beginner friendly", "Night play"],
     accent: "blue",
@@ -92,17 +92,17 @@ export const timeSlots = [
 ];
 
 export const gallery = [
-  { src: "/images/hero.jpg", alt: "KAKX Arena — floodlit turf under the night sky", tag: "Turf" },
-  { src: "/images/g1.jpg", alt: "Box cricket action at KAKX Arena", tag: "Box Cricket" },
-  { src: "/images/g3.jpg", alt: "Cricket academy training session", tag: "Academy" },
-  { src: "/images/g2.jpg", alt: "Pickleball court at KAKX Arena", tag: "Pickleball" },
-  { src: "/images/g3.jpg", alt: "Pro coaching session at KAKX Arena", tag: "Coaching" },
-  { src: "/images/g5.jpg", alt: "Indoor badminton court with KAKX branding", tag: "Badminton" },
-  { src: "/images/g9.jpg", alt: "Badminton court action at KAKX Arena", tag: "Badminton" },
-  { src: "/images/g10.jpg", alt: "Badminton coaching session at KAKX Arena", tag: "Badminton" },
-  { src: "/images/g6.jpg", alt: "Outdoor pickleball court at KAKX Arena", tag: "Pickleball" },
-  { src: "/images/g7.jpg", alt: "7v7 football turf action at KAKX Arena", tag: "Football" },
-  { src: "/images/g8.jpg", alt: "KAKX Arena exterior — Wave City, Ghaziabad", tag: "Arena" },
+  { src: "/images/hero.webp", alt: "KAKX Arena — floodlit turf under the night sky", tag: "Turf" },
+  { src: "/images/g1.webp", alt: "Box cricket action at KAKX Arena", tag: "Box Cricket" },
+  { src: "/images/g3.webp", alt: "Cricket academy training session", tag: "Academy" },
+  { src: "/images/g2.webp", alt: "Pickleball court at KAKX Arena", tag: "Pickleball" },
+  { src: "/images/g3.webp", alt: "Pro coaching session at KAKX Arena", tag: "Coaching" },
+  { src: "/images/g5.webp", alt: "Indoor badminton court with KAKX branding", tag: "Badminton" },
+  { src: "/images/g9.webp", alt: "Badminton court action at KAKX Arena", tag: "Badminton" },
+  { src: "/images/g10.webp", alt: "Badminton coaching session at KAKX Arena", tag: "Badminton" },
+  { src: "/images/g6.webp", alt: "Outdoor pickleball court at KAKX Arena", tag: "Pickleball" },
+  { src: "/images/g7.webp", alt: "7v7 football turf action at KAKX Arena", tag: "Football" },
+  { src: "/images/g8.webp", alt: "KAKX Arena exterior — Wave City, Ghaziabad", tag: "Arena" },
 ];
 
 // NOTE: placeholder reviews — replace with real Google review text before launch.
@@ -114,7 +114,7 @@ export const reviews = [
   },
   {
     name: "Aman K.",
-    text: "The academy coaches really know their stuff. Bowling machine practice has improved my batting timing a lot in just a month.",
+    text: "The academy coaches really know their stuff. My batting has improved a lot in just a month — structured nets and match practice make a real difference.",
     tag: "Academy",
   },
   {

@@ -46,7 +46,7 @@ function Academy() {
           <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-arena-lime/20 to-transparent blur-2xl" />
           <div className="relative overflow-hidden rounded-2xl border border-arena-lime/25">
             <img
-              src="/images/g5.jpg"
+              src="/images/g5.webp"
               alt="KAKX Academy training session — cricket & badminton coaching"
               loading="lazy"
               className="h-[320px] w-full object-cover sm:h-[420px]"

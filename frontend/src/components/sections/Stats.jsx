@@ -17,7 +17,7 @@ function Counter({ value, decimals, suffix }) {
     });
     return () => controls.stop();
   }, [inView, value, decimals, suffix]);
-  return <span ref={ref}>0{suffix}</span>;
+  return <span ref={ref}>{value.toFixed(decimals)}{suffix}</span>;
 }
 function Stats() {
   return (
