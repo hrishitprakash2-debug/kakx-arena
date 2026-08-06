@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Instagram } from "lucide-react";
 import { siteConfig } from "@/data/site";
+import { InstagramIcon } from "@/components/ui/Icons";
 
 // 6 recent-looking posts from the gallery
 const posts = [
@@ -77,7 +77,7 @@ function InstagramFeed() {
               />
               {/* hover overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <Instagram className="h-8 w-8 text-white" />
+                <InstagramIcon className="h-8 w-8 text-white" />
               </div>
             </motion.a>
           ))}
@@ -97,7 +97,7 @@ function InstagramFeed() {
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-arena-green/50 hover:bg-arena-green/10 hover:text-arena-green"
           >
-            <Instagram className="h-4 w-4" />
+            <InstagramIcon className="h-4 w-4" />
             @kakx.arena
           </a>
         </motion.div>
