@@ -66,7 +66,7 @@ export const sports: Sport[] = [
     price: 200,
     priceMax: 250,
     unit: "/hr",
-    image: "/images/g4.jpg",
+    image: "/images/g9.jpg",
     tagline: "International-standard synthetic courts, day or night.",
     features: ["Synthetic court", "International lighting", "Racket rental", "Open 24 hrs"],
     accent: "green",
@@ -96,16 +96,13 @@ export const gallery = [
   { src: "/images/g1.jpg", alt: "Box cricket action at KAKX Arena", tag: "Box Cricket" },
   { src: "/images/g3.jpg", alt: "Cricket academy training session", tag: "Academy" },
   { src: "/images/g2.jpg", alt: "Pickleball court at KAKX Arena", tag: "Pickleball" },
-  { src: "/images/g4.jpg", alt: "Badminton courts — international standard lighting", tag: "Badminton" },
   { src: "/images/g3.jpg", alt: "Pro coaching session at KAKX Arena", tag: "Coaching" },
   { src: "/images/g5.jpg", alt: "Indoor badminton court with KAKX branding", tag: "Badminton" },
+  { src: "/images/g9.jpg", alt: "Badminton court action at KAKX Arena", tag: "Badminton" },
+  { src: "/images/g10.jpg", alt: "Badminton coaching session at KAKX Arena", tag: "Badminton" },
   { src: "/images/g6.jpg", alt: "Outdoor pickleball court at KAKX Arena", tag: "Pickleball" },
   { src: "/images/g7.jpg", alt: "7v7 football turf action at KAKX Arena", tag: "Football" },
   { src: "/images/g8.jpg", alt: "KAKX Arena exterior — Wave City, Ghaziabad", tag: "Arena" },
-  { src: "/images/g9.jpg", alt: "Badminton court action at KAKX Arena", tag: "Badminton" },
-  { src: "/images/g10.jpg", alt: "Badminton coaching session at KAKX Arena", tag: "Badminton" },
-  { src: "/images/g11.jpg", alt: "Badminton rally at KAKX Arena", tag: "Badminton" },
-  { src: "/images/g12.jpg", alt: "Badminton tournament play at KAKX Arena", tag: "Badminton" },
 ];
 
 // NOTE: placeholder reviews — replace with real Google review text before launch.
