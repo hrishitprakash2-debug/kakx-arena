@@ -12,28 +12,28 @@ import { siteConfig, whatsappLink } from "@/data/site";
 import Marquee from "@/components/ui/Marquee";
 const heroCards = [
   {
-    src: "/images/g1.webp",
+    src: "/images/g1.jpg",
     alt: "Box cricket action at KAKX Arena",
     tag: "Box Cricket",
     cta: "Box Cricket · ₹900–1500/hr",
     href: "#booking",
   },
   {
-    src: "/images/g7.webp",
+    src: "/images/g7.jpg",
     alt: "7v7 football turf action at KAKX Arena",
     tag: "Football",
     cta: "7v7 Football · ₹450–600/session",
     href: "#booking",
   },
   {
-    src: "/images/g5.webp",
+    src: "/images/g5.jpg",
     alt: "Indoor badminton court with KAKX branding",
     tag: "Badminton",
     cta: "Badminton · ₹200/hr",
     href: "#booking",
   },
   {
-    src: "/images/g3.webp",
+    src: "/images/g3.jpg",
     alt: "Cricket academy training session",
     tag: "Academy",
     cta: "Join the Academy",
