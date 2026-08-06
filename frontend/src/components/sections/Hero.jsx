@@ -15,7 +15,7 @@ const heroCards = [
     src: "/images/g1.jpg",
     alt: "Box cricket action at KAKX Arena",
     tag: "Box Cricket",
-    cta: "Box Cricket · ₹325/hr",
+    cta: "Box Cricket · ₹900–1500/hr",
     href: "#booking",
   },
   {
