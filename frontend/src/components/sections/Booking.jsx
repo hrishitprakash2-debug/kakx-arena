@@ -148,6 +148,7 @@ function Booking() {
                     </span>
                     <span className="text-[10px] text-zinc-500">
                       ₹{s.price}
+                      {s.priceMax ? `–${s.priceMax}` : ""}
                       {s.unit}
                     </span>
                   </button>
@@ -168,8 +169,7 @@ function Booking() {
                       Booking
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-arena-green/40 bg-arena-green/10 px-3 py-1 font-bold uppercase tracking-wider text-arena-green">
-                      {selectedSport.name} · ₹{selectedSport.price}
-                      {selectedSport.unit}
+                      {selectedSport.name} · ₹{selectedSport.price}{selectedSport.priceMax ? `–${selectedSport.priceMax}` : ""}{selectedSport.unit}
                     </span>
                     <button
                       onClick={() => setStep(0)}
@@ -235,8 +235,7 @@ function Booking() {
                     Booking Summary
                   </p>
                   <p className="mt-2 text-sm text-zinc-300">
-                    {selectedSport?.name} · ₹{selectedSport?.price}
-                    {selectedSport?.unit} — {date} at {slot}
+                    {selectedSport?.name} · ₹{selectedSport?.price}{selectedSport?.priceMax ? `–${selectedSport.priceMax}` : ""}{selectedSport?.unit} — {date} at {slot}
                   </p>
                 </div>
                 <a
