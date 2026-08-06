@@ -1,16 +1,26 @@
 import { motion } from "framer-motion";
-import { Check, Feather, TrendingUp } from "lucide-react";
+import { Check, Feather, Target, TrendingUp } from "lucide-react";
 import { whatsappLink } from "@/data/site";
 const features = [
+  {
+    icon: Target,
+    title: "Cricket Coaching",
+    desc: "Structured nets, match practice and skill drills for all levels.",
+  },
   {
     icon: Feather,
     title: "Badminton Coaching",
     desc: "Footwork, strokes and match play on our synthetic courts.",
   },
   {
+    icon: Check,
+    title: "Football Coaching",
+    desc: "Skills, tactics and match play on our 7v7 turf arena.",
+  },
+  {
     icon: TrendingUp,
     title: "Pro Coaches",
-    desc: "Certified cricket & badminton coaches for every level.",
+    desc: "Certified cricket, badminton & football coaches for every level.",
   },
   {
     icon: Check,
@@ -66,7 +76,7 @@ function Academy() {
             transition={{ duration: 0.5 }}
             className="eyebrow !border-arena-lime/40 !bg-arena-lime/10 !text-arena-lime"
           >
-            Pro Academy — Cricket & Badminton
+            Pro Academy — Cricket, Badminton & Football
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 26 }}
@@ -85,11 +95,13 @@ function Academy() {
             className="mt-5 max-w-lg text-base leading-relaxed text-zinc-400"
           >
             KAKX Academy offers professional coaching for{" "}
-            <span className="font-semibold text-white">cricket</span> and{" "}
-            <span className="font-semibold text-white">badminton</span>.
+            <span className="font-semibold text-white">cricket</span>,{" "}
+            <span className="font-semibold text-white">badminton</span> and{" "}
+            <span className="font-semibold text-white">football</span>.
             Cricketers train with structured nets and match practice;
             badminton players build footwork, strokes and match play on our
-            synthetic courts.
+            synthetic courts; footballers sharpen skills and tactics on our 7v7
+            turf arena.
           </motion.p>
           <div className="mt-8 space-y-5">
             {features.map((f, i) => (
@@ -124,7 +136,7 @@ function Academy() {
           >
             <a
               href={whatsappLink(
-                "Hi KAKX Arena! I want to join the Academy (cricket/badminton coaching). Please share program details and timings.",
+                "Hi KAKX Arena! I want to join the Academy (cricket/badminton/football coaching). Please share program details and timings.",
               )}
               data-wa-label="academy-join"
               target="_blank"
