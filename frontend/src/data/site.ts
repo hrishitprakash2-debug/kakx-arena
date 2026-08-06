@@ -102,6 +102,10 @@ export const gallery = [
   { src: "/images/g6.jpg", alt: "Outdoor pickleball court at KAKX Arena", tag: "Pickleball" },
   { src: "/images/g7.jpg", alt: "7v7 football turf action at KAKX Arena", tag: "Football" },
   { src: "/images/g8.jpg", alt: "KAKX Arena exterior — Wave City, Ghaziabad", tag: "Arena" },
+  { src: "/images/g9.jpg", alt: "Badminton court action at KAKX Arena", tag: "Badminton" },
+  { src: "/images/g10.jpg", alt: "Badminton coaching session at KAKX Arena", tag: "Badminton" },
+  { src: "/images/g11.jpg", alt: "Badminton rally at KAKX Arena", tag: "Badminton" },
+  { src: "/images/g12.jpg", alt: "Badminton tournament play at KAKX Arena", tag: "Badminton" },
 ];
 
 // NOTE: placeholder reviews — replace with real Google review text before launch.
