@@ -131,8 +131,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0b0b0d]" />
       </motion.div>
       <div className="glow-blob left-[-10%] top-[-15%] h-[480px] w-[480px] bg-arena-green/25" />
-      <div className="glow-blob bottom-[-20%] right-[-8%] h-[420px] w-[420px] bg-arena-lime/15" />
-      <div className="container-x relative py-14 lg:grid lg:min-h-[calc(100vh-5rem)] lg:items-center lg:gap-4 lg:grid-cols-[1fr_1.2fr] max-lg:py-20">
+      <div className="container-x relative py-14 lg:grid lg:min-h-[calc(100vh-5rem)] lg:items-center lg:gap-4 lg:grid-cols-[1.1fr_1fr] max-lg:py-20">
         {/* text column */}
         <div className="relative z-10">
           <motion.div
@@ -229,11 +228,11 @@ function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, ease: "easeOut" }}
-            className="relative z-0 h-[420px] overflow-hidden lg:h-[560px]"
+            className="relative z-0 h-[420px] overflow-hidden lg:ml-12 lg:h-[560px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[60px]" />
+            <div className="absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-arena-green/10 blur-[60px]" />
             {/* arrows */}
             <button
               onClick={() => setActive((a) => (a - 1 + cardCount) % cardCount)}
@@ -315,7 +314,7 @@ function Hero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
             className="relative z-0 mt-10 h-[260px] sm:hidden"
           >
-            <div className="absolute left-1/2 top-1/2 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 animate-pulseGlow rounded-full bg-arena-green/20 blur-[50px]" />
+            <div className="absolute left-1/2 top-1/2 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-arena-green/10 blur-[50px]" />
             <AnimatePresence mode="popLayout">
               <motion.a
                 key={heroCards[active].tag}
