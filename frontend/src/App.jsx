@@ -11,7 +11,6 @@ import Academy from "@/components/sections/Academy";
 import Booking from "@/components/sections/Booking";
 import Gallery from "@/components/sections/Gallery";
 import Reviews from "@/components/sections/Reviews";
-import InstagramFeed from "@/components/sections/InstagramFeed";
 import Marquee, { featureMarquee } from "@/components/ui/Marquee";
 import Local from "@/components/sections/Local";
 import Faq from "@/components/sections/Faq";
@@ -29,7 +28,6 @@ function App() {
       <Booking />
       <Gallery />
       <Reviews />
-      <InstagramFeed />
       {/* second ribbon — muted feature labels, runs opposite to the hero ribbon */}
       <Marquee items={featureMarquee} variant="features" reverse speed="24s" />
       <Local />
