@@ -270,10 +270,10 @@ function Hero() {
                       }
                     }}
                     animate={{
-                      x: `${offset * 18}%`,
+                      x: `${offset * 25}%`,
                       y: "-50%",
-                      scale: isCenter ? 1 : 0.82,
-                      opacity: isCenter ? 1 : 0.45,
+                      scale: isCenter ? 1 : 0.75,
+                      opacity: isCenter ? 1 : 0.3,
                       rotate: offset === -1 ? -6 : offset === 1 ? 6 : 0,
                       zIndex: isCenter ? 30 : 10,
                     }}
