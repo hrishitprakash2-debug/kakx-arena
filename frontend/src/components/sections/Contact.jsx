@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Clock, Globe, MapPin, Phone, Send } from "lucide-react";
+import { Clock, Globe, MapPin, Phone } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig } from "@/data/site";
 
 // TODO: Replace with your Formspree form ID — sign up free at https://formspree.io
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
 const cards = [
   {
@@ -35,143 +33,6 @@ const cards = [
     cta: "Follow Us",
   },
 ];
-
-function InquiryForm() {
-  const [form, setForm] = useState({ name: "", phone: "", sport: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("sending");
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          _subject: `KAKX Arena Inquiry — ${form.sport || "General"}`,
-          name: form.name,
-          phone: form.phone,
-          sport: form.sport,
-          message: form.message,
-        }),
-      });
-      setStatus(res.ok ? "sent" : "error");
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  if (status === "sent") {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center justify-center rounded-2xl border border-arena-green/30 bg-arena-green/10 p-10 text-center"
-      >
-        <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-arena-green/20 text-arena-green">
-          <Send className="h-6 w-6" />
-        </span>
-        <h3 className="font-display text-2xl uppercase tracking-wide text-white">Message Sent!</h3>
-        <p className="mt-2 text-sm text-zinc-400">We'll get back to you within a few hours.</p>
-        <button
-          onClick={() => { setStatus("idle"); setForm({ name: "", phone: "", sport: "", message: "" }); }}
-          className="mt-6 text-xs font-bold uppercase tracking-wider text-arena-green hover:underline"
-        >
-          Send Another
-        </button>
-      </motion.div>
-    );
-  }
-
-  return (
-    <motion.form
-      onSubmit={handleSubmit}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="rounded-2xl border border-white/10 bg-arena-card p-6 sm:p-8"
-    >
-      <h3 className="font-display text-2xl uppercase tracking-wide text-white mb-1">Send an Inquiry</h3>
-      <p className="text-sm text-zinc-500 mb-6">Fill in the details and we'll reach out to you.</p>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="name" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-zinc-500">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-arena-green/50"
-          />
-        </div>
-        <div>
-          <label htmlFor="phone" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-zinc-500">Phone</label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            required
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="+91 98765 43210"
-            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-arena-green/50"
-          />
-        </div>
-      </div>
-
-      <div className="mt-4">
-        <label htmlFor="sport" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-zinc-500">Interested In</label>
-        <select
-          id="sport"
-          name="sport"
-          value={form.sport}
-          onChange={handleChange}
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors focus:border-arena-green/50"
-        >
-          <option value="" className="bg-black">Select a sport</option>
-          <option value="Box Cricket" className="bg-black">Box Cricket</option>
-          <option value="7v7 Football" className="bg-black">7v7 Football</option>
-          <option value="Badminton" className="bg-black">Badminton</option>
-          <option value="Pickleball" className="bg-black">Pickleball</option>
-          <option value="Academy" className="bg-black">Academy (Cricket/Badminton/Football)</option>
-          <option value="Corporate/Event" className="bg-black">Corporate / Event Booking</option>
-          <option value="General" className="bg-black">General Inquiry</option>
-        </select>
-      </div>
-
-      <div className="mt-4">
-        <label htmlFor="message" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-zinc-500">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          rows={3}
-          value={form.message}
-          onChange={handleChange}
-          placeholder="Any specific requirements or questions..."
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-600 focus:border-arena-green/50 resize-none"
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-arena-mint px-6 py-3 text-sm font-bold uppercase tracking-wider text-black transition-all duration-300 hover:brightness-110 disabled:opacity-50 sm:w-auto"
-      >
-        {status === "sending" ? "Sending..." : <><Send className="h-4 w-4" /> Send Inquiry</>}
-      </button>
-      {status === "error" && (
-        <p className="mt-3 text-xs text-red-400">Something went wrong. Please try again or message us on WhatsApp.</p>
-      )}
-    </motion.form>
-  );
-}
 
 function Contact() {
   return (
@@ -297,10 +158,6 @@ function Contact() {
           </motion.div>
         </div>
 
-        {/* Inquiry Form — full width below the grid */}
-        <div className="mt-12">
-          <InquiryForm />
-        </div>
       </div>
     </section>
   );
