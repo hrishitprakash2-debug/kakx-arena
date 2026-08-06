@@ -96,7 +96,6 @@ export const gallery = [
   { src: "/images/g1.jpg", alt: "Box cricket action at KAKX Arena", tag: "Box Cricket" },
   { src: "/images/g3.jpg", alt: "Cricket academy training session", tag: "Academy" },
   { src: "/images/g2.jpg", alt: "Pickleball court at KAKX Arena", tag: "Pickleball" },
-  { src: "/images/g3.jpg", alt: "Pro coaching session at KAKX Arena", tag: "Coaching" },
   { src: "/images/g5.jpg", alt: "Indoor badminton court with KAKX branding", tag: "Badminton" },
   { src: "/images/g9.jpg", alt: "Badminton court action at KAKX Arena", tag: "Badminton" },
   { src: "/images/g10.jpg", alt: "Badminton coaching session at KAKX Arena", tag: "Badminton" },
