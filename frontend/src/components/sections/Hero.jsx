@@ -229,7 +229,7 @@ function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.1, ease: "easeOut" }}
-            className="relative z-0 h-[420px] overflow-hidden lg:ml-16 lg:mt-8 lg:h-[560px]"
+            className="relative z-0 h-[420px] overflow-hidden lg:h-[560px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
@@ -271,7 +271,7 @@ function Hero() {
                       }
                     }}
                     animate={{
-                      x: `${offset * 22}%`,
+                      x: `${offset * 18}%`,
                       y: "-50%",
                       scale: isCenter ? 1 : 0.82,
                       opacity: isCenter ? 1 : 0.45,
@@ -283,7 +283,7 @@ function Hero() {
                       stiffness: 260,
                       damping: 28,
                     }}
-                    className="group absolute inset-x-0 top-1/2 mx-auto h-[86%] w-[58%] max-w-[380px] overflow-hidden rounded-[2rem] border border-arena-green/30 text-left shadow-[0_0_60px_rgba(16,185,129,0.3)]"
+                    className="group absolute inset-x-0 top-1/2 mx-auto h-[86%] w-[55%] max-w-[360px] overflow-hidden rounded-[2rem] border border-arena-green/30 text-left shadow-[0_0_60px_rgba(16,185,129,0.3)]"
                     aria-label={card.alt}
                   >
                     <img
